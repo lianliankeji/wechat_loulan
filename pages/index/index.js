@@ -4,10 +4,31 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    rank: [
+      {
+        name: "小芋",
+        score: 88888
+      },
+      {
+        name: "伍声",
+        score: 88888
+      },
+      {
+        name: "规格",
+        score: 88888
+      },
+      {
+        name: "订单",
+        score: 88888
+      },
+      {
+        name: "该公司大范甘迪",
+        score: 88888
+      }
+    ]
+  },
+  detail() {
+
   },
   //事件处理函数
   bindViewTap: function() {

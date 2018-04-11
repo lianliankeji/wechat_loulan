@@ -1,13 +1,51 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class='top'>
+    <image class='bg' src='/image/bg1.png'></image>
+    <view class='info'>
+
+      <view class='finish'>
+        <text>本期完成度</text>
+        <text>80%</text>
+      </view>
+
+      <view class='account flex-row-spaceBetween'>
+        <view class=''>
+          <text class='num'>50000000</text>
+          <text class='unit'>DCT</text>
+        </view>
+        <view class='detail'>
+          <text class='stage'>1</text>
+          <text class='stage-unit'>期</text>
+          <image class='arrow' src='/image/arrow.png'></image>
+        </view> 
+      </view>
+
+    </view>
+  </view>
+  <view class='report flex-row-center'>
+    <image class='horn-img' src='/image/horn.png'></image>
+    <view>{{'狂奔的包子'}} 上传1张电影票</view>
+  </view>
+  <view class='rank'>
+    <view class='rhead flex-row-spaceBetween'>
+      <view>用户排名</view>
+      <view>积分奖励</view>
+    </view>
+
+    <block wx:for="{{rank}}" wx:key="{{index}}">
+      <view class='rank-item flex-row-spaceBetween'>
+        <view class='flex-row-flexStart'>
+          <text class='ranking'>{{index + 1}}</text>
+          <image class='avator' src="/image/bg1.png"></image>
+          <text>{{item.name}}</text>
+        </view>
+        <text>{{item.score}}</text>
+      </view>
     </block>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class='ticket'>
+    <image class='ticket-img' src='/image/ticket.png'></image>
   </view>
 </view>

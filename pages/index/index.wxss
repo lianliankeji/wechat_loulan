@@ -1,21 +1,127 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+page{
+  height: 100%;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+.container{
+  height: 100%;
+  overflow: hidden;
+}
+
+.top {
+  position: relative;
+}
+
+.bg {
+  width: 100%;
+  height: 360rpx;
+}
+
+.top .info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+
+.top .finish {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 21px;
+}
+
+.top .account {
+  margin-top: 30rpx;
+}
+
+.num {
+  font-size: 60rpx;
+  font-family: PingFang-SC-Bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42px;
+}
+
+.unit {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(51, 51, 51, 1);
+  line-height: 20px;
+  margin-left: 10rpx;
+}
+
+.stage {
+  margin-right: 12rpx;
+}
+
+.stage-unit {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(51, 51, 51, 1);
+  line-height: 20px;
+}
+
+.arrow {
+  width: 16rpx;
+  height: 24rpx;
+  margin-left: 10rpx;
+}
+
+.report {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(253, 143, 47, 1);
+  line-height: 20px;
+}
+
+.horn-img {
+  width: 40rpx;
+  height: 32rpx;
+  margin-right: 22rpx;
+}
+
+.rank {
+  border-top: 2rpx #ececec solid;
+  border-bottom: 2rpx #ececec solid;
+  margin: 30rpx 40rpx;
+  box-sizing: border-box;
+  padding: 40rpx 30rpx;
+}
+
+.rhead {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 20px;
+}
+
+.rank-item {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(153, 153, 153, 1);
+  line-height: 20px;
+  margin-top: 30rpx;
+}
+
+.ranking{
+  width: 16rpx;
+}
+
+.avator {
+  width: 40rpx;
+  height: 40rpx;
   border-radius: 50%;
+  margin-left: 24rpx;
+  margin-right: 12rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.ticket {
+  margin: 4rpx 30rpx 0 30rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.ticket-img {
+  width: 100%;
+  height: 196rpx;
 }
