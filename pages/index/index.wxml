@@ -48,4 +48,9 @@
   <view class='ticket'>
     <image class='ticket-img' src='/image/ticket.png'></image>
   </view>
+
+  <Barrage bind:myevent="aaa">
+    <view slot="before">这里是插入到组件slot中的内容</view>
+    <view slot="after">这里是插入到组件slot中的内容</view>
+  </Barrage>
 </view>

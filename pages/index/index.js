@@ -27,6 +27,9 @@ Page({
       }
     ]
   },
+  aaa(e) {
+    console.log(e)
+  },
   detail() {
 
   },
@@ -63,6 +66,15 @@ Page({
         }
       })
     }
+  },
+  onShow: function () {
+    wx.saveFile({
+      tempFilePath: "../../utils/util.js",
+      success: function (res) {
+        console.log(res)
+        var savedFilePath = res.savedFilePath
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
