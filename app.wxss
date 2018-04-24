@@ -1,2 +1,4 @@
-@import "./common/css/flex.wxss"
+@import "./common/css/flex.wxss";
+@import "./common/css/position.wxss";
+
 

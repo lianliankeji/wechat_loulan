@@ -1,0 +1,113 @@
+page {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  overflow: hidden;
+  background-color: #ececec;
+  position: relative;
+}
+
+.head {
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+.head .bg {
+  width: 100%;
+  height: 260rpx;
+}
+
+.head .info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.head .avator {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-left: 40rpx;
+  margin-right: 44rpx;
+}
+
+.head .name {
+  font-size: 34rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 24px;
+  margin-bottom: 20rpx;
+}
+
+.head .score {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(51, 51, 51, 1);
+  line-height: 20px;
+  margin-left: 6rpx;
+}
+
+.head .scorelogo {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin-top: 280rpx;
+}
+
+.content-title {
+  text-align: center;
+  padding-top: 40rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42px;
+}
+
+.item {
+  margin: 30rpx 40rpx;
+  border-bottom: 1px #ececec solid;
+  padding-bottom: 30rpx;
+}
+
+.item .logo {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 30rpx;
+}
+
+.item .title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
+}
+
+.item .desc {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.button {
+  margin-right: 0;
+  width: 98rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 4px;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(102, 102, 102, 1);
+  padding: 0;
+  background-color: #fff;
+}

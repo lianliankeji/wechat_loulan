@@ -1,0 +1,86 @@
+page {
+  height: 100%;
+}
+
+.container {
+  padding: 40rpx;
+  height: 100%;
+  overflow: hidden;
+}
+
+.head {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
+}
+
+.movieIcon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.reupload {
+  width: 160rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1px #ececec solid;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.upload-content {
+  text-align: center;
+  line-height: 520rpx;
+  width: 400rpx;
+  height: 520rpx;
+  border: 1px #ddd solid;
+  margin: 0 auto;
+  margin-top: 80rpx;
+}
+
+.upload {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+}
+
+.section{
+  margin-top: 60rpx;
+  font-size: 30rpx;
+}
+
+.section-lable{
+  margin-right: 20rpx;
+}
+
+.section-input{
+  width: 80%;
+  margin-right: 12rpx;
+  border-bottom: 1px #ececec solid;
+}
+
+.section-input{
+  padding-left: 30rpx;
+}
+
+.next {
+  width: 200rpx;
+  height: 70rpx;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 70rpx;
+  margin: 90rpx auto;
+  margin-bottom: 0;
+  background:rgba(253,143,47,1);
+  font-size: 30rpx;
+  color: #fff;
+}

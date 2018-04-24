@@ -1,0 +1,27 @@
+<view class="container">
+  <view class='head flex-row-spaceBetween'>
+    <view class='left flex-row-flexStart'>
+      <image class='movieIcon' src='{{movieIcon}}'></image>
+      <text>选择封面</text>
+    </view>
+    
+    <view class='reupload' wx:if='{{reupshow}}' bindtap='addCover'>重新上传</view>
+  </view>
+
+  <view class='upload-content' bindtap='addCover'>
+    <image src='{{coversrc}}' wx:if='{{show}}' class='video'></image>
+    <image class='upload' src='{{uploadIcon}}' wx:if='{{!show}}'></image>
+  </view>
+
+  <view class='section flex-row-flexStart'>
+    <label class='section-lable'>标题</label>
+    <input class='section-input' maxlength='16' bindinput='bindTitleTap' placeholder='请输入标题'></input>
+  </view>
+
+  <view class='section flex-row-flexStart'>
+    <label class='section-lable'>简介</label>
+    <input class='section-input' maxlength='16' bindinput='bindInfoTap' placeholder='16字简介'></input>
+  </view>
+
+  <button class='next' disabled='{{buttonDisabled}}' bindtap='next'>下一步</button>
+</view>

@@ -1,0 +1,17 @@
+<view class="container">
+  <view class='head flex-row-spaceBetween'>
+    <view class='left flex-row-flexStart'>
+      <image class='movieIcon' src='{{movieIcon}}'></image>
+      <text>选择视频</text>
+    </view>
+    
+    <view class='reupload' wx:if='{{reupshow}}' bindtap='addMovie'>重新上传</view>
+  </view>
+
+  <view class='upload-content' bindtap='addMovie'>
+    <video src='{{videosrc}}' wx:if='{{show}}' class='video'></video>
+    <image class='upload' src='{{uploadIcon}}' wx:if='{{!show}}'></image>
+  </view>
+
+  <button class='next' disabled='{{!reupshow}}' bindtap='next'>下一步</button>
+</view>

@@ -1,31 +1,28 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
-    rank: [
-      {
-        name: "小芋",
-        score: 88888
-      },
-      {
-        name: "伍声",
-        score: 88888
-      },
-      {
-        name: "规格",
-        score: 88888
-      },
-      {
-        name: "订单",
-        score: 88888
-      },
-      {
-        name: "该公司大范甘迪",
-        score: 88888
-      }
-    ]
+    bg: "/image/homebg.png",
+    photo: "/image/photo.png",
+    search: "/image/search.png",
+    praise: "/image/praise.png",
+    share: "/image/share.png",
+    avatar: "/image/upload.png",
+    praiseNum: 234,
+    shareNum: 456,
+    iconlist: ["英雄", "怪兽", "科幻"]
+  },
+  photo() {
+    wx.navigateTo({
+      url: '/packageA/uploadMovie/uploadMovie',
+    })
+  },
+  bindUserView() {
+    wx.navigateTo({
+      url: '/packageA/user/user',
+    })
   },
   aaa(e) {
     console.log(e)
@@ -40,32 +37,32 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    // if (app.globalData.userInfo) {
+    //   this.setData({
+    //     userInfo: app.globalData.userInfo,
+    //     hasUserInfo: true
+    //   })
+    // } else if (this.data.canIUse){
+    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //   // 所以此处加入 callback 以防止这种情况
+    //   app.userInfoReadyCallback = res => {
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //   }
+    // } else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,
+    //         hasUserInfo: true
+    //       })
+    //     }
+    //   })
+    // }
   },
   onShow: function () {
     wx.saveFile({
@@ -74,14 +71,6 @@ Page({
         console.log(res)
         var savedFilePath = res.savedFilePath
       }
-    })
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
   }
 })

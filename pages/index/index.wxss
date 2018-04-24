@@ -1,127 +1,151 @@
-page{
+page {
   height: 100%;
 }
 
-.container{
+.container {
   height: 100%;
-  /* overflow: hidden; */
-}
-
-.top {
+  width: 100%;
+  overflow: hidden;
   position: relative;
 }
 
-.bg {
-  width: 100%;
-  height: 360rpx;
-}
-
-.top .info {
-  position: absolute;
-  width: 100%;
+.container .bg {
   height: 100%;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  padding: 40rpx;
-}
-
-.top .finish {
-  font-size: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(51, 51, 51, 1);
-  line-height: 21px;
-}
-
-.top .account {
-  margin-top: 30rpx;
-}
-
-.num {
-  font-size: 60rpx;
-  font-family: PingFang-SC-Bold;
-  color: rgba(51, 51, 51, 1);
-  line-height: 42px;
-}
-
-.unit {
-  font-size: 28rpx;
-  font-family: PingFang-SC-Regular;
-  color: rgba(51, 51, 51, 1);
-  line-height: 20px;
-  margin-left: 10rpx;
-}
-
-.stage {
-  margin-right: 12rpx;
-}
-
-.stage-unit {
-  font-size: 28rpx;
-  font-family: PingFang-SC-Regular;
-  color: rgba(51, 51, 51, 1);
-  line-height: 20px;
-}
-
-.arrow {
-  width: 16rpx;
-  height: 24rpx;
-  margin-left: 10rpx;
-}
-
-.report {
-  font-size: 28rpx;
-  font-family: PingFang-SC-Regular;
-  color: rgba(253, 143, 47, 1);
-  line-height: 20px;
-}
-
-.horn-img {
-  width: 40rpx;
-  height: 32rpx;
-  margin-right: 22rpx;
-}
-
-.rank {
-  border-top: 2rpx #ececec solid;
-  border-bottom: 2rpx #ececec solid;
-  margin: 30rpx 40rpx;
-  box-sizing: border-box;
-  padding: 40rpx 30rpx;
-}
-
-.rhead {
-  font-size: 28rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(51, 51, 51, 1);
-  line-height: 20px;
-}
-
-.rank-item {
-  font-size: 28rpx;
-  font-family: PingFang-SC-Regular;
-  color: rgba(153, 153, 153, 1);
-  line-height: 20px;
-  margin-top: 30rpx;
-}
-
-.ranking{
-  width: 16rpx;
-}
-
-.avator {
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
-  margin-left: 24rpx;
-  margin-right: 12rpx;
-}
-
-.ticket {
-  margin: 4rpx 30rpx 0 30rpx;
-}
-
-.ticket-img {
   width: 100%;
-  height: 196rpx;
+}
+
+.photo {
+  position: absolute;
+  left: 40rpx;
+  top: 40rpx;
+  z-index: 1;
+  width: 52rpx;
+  height: 42rpx;
+}
+
+.search {
+  position: absolute;
+  right: 40rpx;
+  top: 40rpx;
+  z-index: 1;
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.praise-content {
+  position: absolute;
+  bottom: 430rpx;
+  right: 40rpx;
+  text-align: center;
+  z-index: 1;
+}
+
+.praise {
+  width: 52rpx;
+  height: 48rpx;
+}
+
+.share-content {
+  position: absolute;
+  bottom: 260rpx;
+  right: 40rpx;
+  text-align: center;
+  z-index: 1;
+}
+
+.share {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.total{
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  line-height: 34rpx;
+}
+
+.bottom {
+  height: 240rpx;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  padding: 28rpx 40rpx 0 40rpx;
+  background-color: rgba(0, 0, 0, 0.15);
+  align-items: flex-start;
+}
+
+.bottom .left {
+  align-items: flex-start;
+}
+
+.bottom .score {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(bottom right, red, blue); /* 标准的语法 */
+  background: -webkit-linear-gradient(bottom right, #fd8f2f, #fede6a);
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 4rpx;
+  margin-right: 24rpx;
+}
+
+.bottom .score .num {
+  font-size: 30rpx;
+}
+
+.bottom .score .unit {
+  font-size: 20rpx;
+}
+
+.bottom .medium {
+  width: 60%;
+}
+
+.bottom .medium .title {
+  font-size: 34rpx;
+  font-family: PingFang-SC-Bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 48rpx;
+}
+
+.bottom .medium .desc {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(255, 255, 255, 1);
+  line-height: 34rpx;
+  height: 34px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10rpx;
+}
+
+.icon {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(253, 143, 47, 1);
+  line-height: 34rpx;
+  margin-top: 10rpx;
+}
+
+.icon-item {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.right {
+  height: 100%;
+  position: relative;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  bottom: 40rpx;
 }

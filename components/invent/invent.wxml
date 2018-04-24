@@ -1,0 +1,19 @@
+<view class="invent-container" hidden='{{hidden}}'>
+  <view class='mask'  catchtap='bindToasthide'></view>
+  <view class='content'>
+    <image class='content-bg' src="/image/Rectangle.png"></image>
+    <view class='section'>
+      <view class='section-title'>-- 您的邀请码 --</view>
+      <view class='pwd'>6628</view>
+      <view class='bottom flex-row-flexStart'>
+        <image class='qrcode' src='/image/qrcode.png'></image>
+        <view>
+          <view class='slogon'>莫高“链”上影生活</view>
+          <view class='info'>c长按识别小程序码</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='prompt'>长按图片保存</view>
+  </view>
+</view>

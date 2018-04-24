@@ -1,0 +1,81 @@
+<view class="container">
+  <view class='head'>
+    <image class='bg' src='/image/bg.png'></image>
+    <view class='info flex-row-flexStart'>
+      <image class='avator' src='{{avatarUrl}}'></image>
+      <view>
+        <view class='name'>{{nickName}}</view>
+        <view>
+          <image class='scorelogo' src="/image/score.png"></image>
+          <text class='score'>8900 DTC</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='content'>
+    <view class='content-title'>--  精彩活动  --</view>
+
+    <view class='list'>
+
+      <view class='item flex-row-spaceBetween'>
+        <view class='flex-row-flexStart'>
+           <image class='logo' src="/image/upload.png"></image> 
+           <view>
+              <view class='title'>电影票变废为宝</view>
+              <view class='desc'>上传电影票根，奖励50DTC</view>
+           </view>
+        </view>
+        <button class='button' bindtap='upload'>上传</button>
+      </view>
+
+      <view class='item flex-row-spaceBetween'>
+        <view class='flex-row-flexStart'>
+           <image class='logo' src="/image/pingjia.png"></image> 
+           <view>
+              <view class='title'>电影票变废为宝</view>
+              <view class='desc'>上传电影票根，奖励50DTC</view>
+           </view>
+        </view>
+        <button class='button'>上传</button>
+      </view>
+
+      <view class='item flex-row-spaceBetween'>
+        <view class='flex-row-flexStart'>
+           <image class='logo' src="/image/pingjia.png"></image> 
+           <view>
+              <view class='title'>电影票变废为宝</view>
+              <view class='desc'>上传电影票根，奖励50DTC</view>
+           </view>
+        </view>
+        <button class='button'>上传</button>
+      </view>
+
+      <view class='item flex-row-spaceBetween'>
+        <view class='flex-row-flexStart'>
+           <image class='logo' src="/image/appointment.png"></image> 
+           <view>
+              <view class='title'>约看电影</view>
+              <view class='desc'>就在影院，遇见你，奖励50DCT</view>
+           </view>
+        </view>
+        <button class='button'>上传</button>
+      </view>
+
+      <view class='item flex-row-spaceBetween'>
+        <view class='flex-row-flexStart'>
+           <image class='logo' src="/image/invent.png"></image> 
+           <view>
+              <view class='title'>邀请新伙伴</view>
+              <view class='desc'>邀请新用户注册，奖励50</view>
+           </view>
+        </view>
+        <button class='button' bindtap='bindInventView'>邀请</button>
+      </view>
+
+    </view>
+  </view>
+
+
+  <Invent hidden="{{hidden}}"></Invent>
+</view>

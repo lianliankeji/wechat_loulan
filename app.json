@@ -1,19 +1,22 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index"
   ],
   "subPackages": [
     {
       "root": "packageA/",
       "pages": [
-        "user/user"
+        "user/user",
+        "analyse/analyse",
+        "uploadMovie/uploadMovie",
+        "uploadCover/uploadCover"
       ]
     }
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "莫高",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "white"
   }
 }

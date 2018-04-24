@@ -1,4 +1,7 @@
 {
+  "navigationBarBackgroundColor": "#000000",
+  "backgroundColor": "#333",
+  "disableScroll": true,
   "usingComponents": {
     "Barrage": "../../components/barrage/barrage"
   }

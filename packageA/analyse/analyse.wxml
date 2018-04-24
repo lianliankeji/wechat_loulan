@@ -1,0 +1,49 @@
+<view class="container">
+  <!-- <view class='analysing'>
+    <image class='img' src='/image/analyse.png'></image>
+    <view class='info1'>AI机器人正在分析数据…</view>
+    <view class='info2'>完成运算大概需要5～20秒 请耐心等待</view>
+  </view>
+
+  <!-- <view class='faild'>
+    <image class='img' src='/image/faild.png'></image>
+    <view class='info1'>上传失败</view>
+    <view class='bottom'>
+      <view class='title'>可能失败原因</view>
+      <view class='reason'>
+        <view>*照片内容不够清晰</view>
+        <view>*照片内容未含：时间、影院、片名、价格信息</view>
+        <view>*观影时间超过一周</view>
+      </view>
+    </view>
+
+    <view class='reupload' bindtap='reupload'>重新上传</view>
+  </view> -->
+
+
+  <view class='success'>
+    <image class='img' src='/image/analyse.png'></image>
+    <view class='info1'>上传成功！</view>
+    <view class='info2'>恭喜获得奖励积分390DCT</view>
+    <view class='bottom'>
+      <view>
+        <text class='tit'>#标签</text> 
+        <text class='add' bindtap='bindShowAddModal'>+...</text>
+      </view>
+      <view class='iconlist'>
+        <view class='icon-item' wx:for="{{iconlist}}" wx:key="{{index}}">{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class='back' bindtap='goHome'>回到首页</view>
+  </view> 
+
+
+  <view class='add-icon-modal' hidden='{{addModal}}'>
+    <input 
+      class='add-icon-input' 
+      bindconfirm="bindAddFinish"
+      maxlength='4'
+      placeholder='请输入标签名称'></input>
+  </view>
+</view>

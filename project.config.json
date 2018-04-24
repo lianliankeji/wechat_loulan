@@ -21,13 +21,46 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "packageA/user/user",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "票根上传",
+					"pathName": "packageA/analyse/analyse",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "上传视频",
+					"pathName": "packageA/uploadMovie/uploadMovie",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "上传封面",
+					"pathName": "packageA/uploadCover/uploadCover",
+					"query": "",
+					"scene": "1011"
+				}
+			]
 		}
 	}
 }

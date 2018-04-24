@@ -1,56 +1,29 @@
-<!--index.wxml-->
 <view class="container">
-  <view class='top'>
-    <image class='bg' src='/image/bg1.png'></image>
-    <view class='info'>
-
-      <view class='finish'>
-        <text>本期完成度</text>
-        <text>80%</text>
-      </view>
-
-      <view class='account flex-row-spaceBetween'>
-        <view class=''>
-          <text class='num'>50000000</text>
-          <text class='unit'>DCT</text>
+  <image class='bg' src="{{bg}}"></image>
+  <image class='photo' bindtap='photo' src='{{photo}}'></image>
+  <image class='search' src='{{search}}'></image>
+  <view class='praise-content'>
+    <image class='praise' src='{{praise}}'></image>
+    <view class='total'>{{praiseNum}}</view>
+  </view>
+  <view class='share-content'>
+    <image class='share' src='{{share}}'></image>
+    <view class='total'>{{shareNum}}</view>
+  </view>
+  <view class='bottom flex-row-spaceBetween'>
+    <view class='left flex-row-flexStart'>
+      <view class='score'><text class='num'>8.9</text><text class='unit'>分</text></view>
+      <view class='medium'>
+        <view class='title'>狂暴巨兽</view>
+        <view class='desc'>简介简介简介简介简介简介简介简简介简介简介简介简介简介简介简简介简介简介简介简介简介简介简</view>
+        <view class='icon'>
+          <view class='icon-item' wx:for="{{iconlist}}" wx:key="{{index}}">#{{item}}</view>
         </view>
-        <view class='detail'>
-          <text class='stage'>1</text>
-          <text class='stage-unit'>期</text>
-          <image class='arrow' src='/image/arrow.png'></image>
-        </view> 
       </view>
-
-    </view>
-  </view>
-  <view class='report flex-row-center'>
-    <image class='horn-img' src='/image/horn.png'></image>
-    <view>{{'狂奔的包子'}} 上传1张电影票</view>
-  </view>
-  <view class='rank'>
-    <view class='rhead flex-row-spaceBetween'>
-      <view>用户排名</view>
-      <view>积分奖励</view>
     </view>
 
-    <block wx:for="{{rank}}" wx:key="{{index}}">
-      <view class='rank-item flex-row-spaceBetween'>
-        <view class='flex-row-flexStart'>
-          <text class='ranking'>{{index + 1}}</text>
-          <image class='avator' src="/image/bg1.png"></image>
-          <text>{{item.name}}</text>
-        </view>
-        <text>{{item.score}}</text>
-      </view>
-    </block>
+    <view class='right'>
+      <image class='avatar' src='{{avatar}}'></image>
+    </view>
   </view>
-
-  <view class='ticket'>
-    <image class='ticket-img' src='/image/ticket.png'></image>
-  </view>
-
-  <Barrage bind:myevent="aaa">
-    <view slot="before">这里是插入到组件slot中的内容</view>
-    <view slot="after">这里是插入到组件slot中的内容</view>
-  </Barrage>
 </view>
