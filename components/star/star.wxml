@@ -1,0 +1,3 @@
+<view class="star-container">
+  <image class='star-item' wx:for="{{total}}" wx:for-index="idx" wx:key="{{idx}}" data-index="{{idx}}" bindtap='choose' src="{{choose >= idx ? '/image/StarA.png' : '/image/Star.png'}}"></image>
+</view>

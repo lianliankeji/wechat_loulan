@@ -1,5 +1,5 @@
 <view class="container">
-  <image class='bg' src="{{bg}}"></image>
+  <image bindtap='play' class='bg' src="{{bg}}"></image>
   <image class='photo' bindtap='photo' src='{{photo}}'></image>
   <image class='search' src='{{search}}'></image>
   <view class='praise-content'>
@@ -23,7 +23,7 @@
     </view>
 
     <view class='right'>
-      <image class='avatar' src='{{avatar}}'></image>
+      <image class='avatar' bindtap='bindUserTap' src='{{avatarUrl}}'></image>
     </view>
   </view>
 </view>

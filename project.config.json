@@ -59,6 +59,13 @@
 					"pathName": "packageA/uploadCover/uploadCover",
 					"query": "",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "播放",
+					"pathName": "packageA/play/play",
+					"query": "",
+					"scene": "1011"
 				}
 			]
 		}

@@ -1,0 +1,106 @@
+page {
+  background-color: #000;
+}
+
+.container {
+  color: #fff;
+}
+
+.video {
+  width: 100%;
+  height: 400rpx;
+}
+
+.title {
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.line {
+  height: 1px;
+  width: 250rpx;
+  background-color: #666;
+  display: inline-block;
+}
+
+.word {
+  margin-left: 56rpx;
+  margin-right: 56rpx;
+}
+
+.data {
+  height: 340rpx;
+  margin: 40rpx;
+}
+
+.canvas {
+  width: 300rpx;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1233);
+  position: relative;
+}
+
+.plot {
+  position: absolute;
+  color: red;
+  left: 5px;
+  top: 20px;
+  text-align: center;
+}
+
+.show {
+  position: absolute;
+  color: red;
+  right: 5px;
+  top: 20px;
+  text-align: center;
+}
+
+.optic {
+  position: absolute;
+  color: red;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.classy {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.promt {
+  font-size: 20rpx;
+  color: #ff8201;
+}
+
+.star {
+  width: 350rpx;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1233);
+  box-sizing: border-box;
+  padding: 40rpx 20rpx;
+}
+
+.star_head {
+  margin-bottom: 46rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(253, 143, 47, 1);
+  line-height: 34rpx;
+}
+
+.item_title {
+  margin-right: 8rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40rpx;
+}
+
+.cans {
+  width: 130px;
+  height: 130px;
+  margin: 40rpx auto;
+}

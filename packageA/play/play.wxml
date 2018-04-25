@@ -1,0 +1,43 @@
+<view class="container">
+  <video class='video'></video>
+  <view class='title'><text class='line'></text> <text class='word'>评分</text> <text class='line'></text></view>
+  <view class='data flex-row-spaceBetween'>
+    <view class='canvas'>
+      <canvas class='cans' canvas-id="myCanvas"/>
+      <view class='plot'>
+        <view class='classy'>剧情</view>
+        <view class='promt'>中</view>
+      </view>
+      <view class='show'>
+        <view class='classy'>表演</view>
+        <view class='promt'>好</view>
+      </view>
+      <view class='optic'>
+        <view class='classy'>声光</view>
+        <view class='promt'>好</view>
+      </view>
+    </view>
+    <view class='star'>
+      <view class='star_head'>我来评分</view>
+      <view class='item flex-row-flexStart'>
+        <view class='item_title'>剧情</view>
+        <view>
+          <Star total="{{total}}"  bind:plotEvent="plotEvent" targets="{{'plotEvent'}}"></Star>
+        </view>
+      </view>
+      <view class='item flex-row-flexStart'>
+        <view class='item_title'>表演</view>
+        <view>
+          <Star total="{{total}}"  bind:showEvent="showEvent" targets="{{'showEvent'}}"></Star>
+        </view>
+      </view>
+      <view class='item flex-row-flexStart'>
+        <view class='item_title'>音乐</view>
+        <view>
+          <Star total="{{total}}" bind:musicEvent="musicEvent" targets="{{'musicEvent'}}"></Star>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='title'><text class='line'></text> <text class='word'>标签</text> <text class='line'></text></view>
+</view>

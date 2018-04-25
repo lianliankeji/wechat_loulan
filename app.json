@@ -9,7 +9,8 @@
         "user/user",
         "analyse/analyse",
         "uploadMovie/uploadMovie",
-        "uploadCover/uploadCover"
+        "uploadCover/uploadCover",
+        "play/play"
       ]
     }
   ],

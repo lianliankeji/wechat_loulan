@@ -31,10 +31,10 @@
 
       <view class='item flex-row-spaceBetween'>
         <view class='flex-row-flexStart'>
-           <image class='logo' src="/image/pingjia.png"></image> 
+           <image class='logo' src="/image/presee.png"></image> 
            <view>
-              <view class='title'>电影票变废为宝</view>
-              <view class='desc'>上传电影票根，奖励50DTC</view>
+              <view class='title'>预告抢先看</view>
+              <view class='desc'>观看预告片，奖励50DTC</view>
            </view>
         </view>
         <button class='button'>上传</button>
@@ -42,10 +42,10 @@
 
       <view class='item flex-row-spaceBetween'>
         <view class='flex-row-flexStart'>
-           <image class='logo' src="/image/pingjia.png"></image> 
+           <image class='logo' src="/image/dianping.png"></image> 
            <view>
-              <view class='title'>电影票变废为宝</view>
-              <view class='desc'>上传电影票根，奖励50DTC</view>
+              <view class='title'>好剧热点评</view>
+              <view class='desc'>写影评看影评，奖励50DTC</view>
            </view>
         </view>
         <button class='button'>上传</button>
@@ -67,7 +67,7 @@
            <image class='logo' src="/image/invent.png"></image> 
            <view>
               <view class='title'>邀请新伙伴</view>
-              <view class='desc'>邀请新用户注册，奖励50</view>
+              <view class='desc'>邀请新用户注册，奖励50DTC</view>
            </view>
         </view>
         <button class='button' bindtap='bindInventView'>邀请</button>

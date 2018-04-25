@@ -1,0 +1,5 @@
+.star-item{
+  width: 34rpx;
+  height: 32rpx;
+  margin-left: 12rpx;
+}
