@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -64,6 +64,13 @@
 					"id": -1,
 					"name": "播放",
 					"pathName": "packageA/play/play",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "评价",
+					"pathName": "packageA/evaluate/evaluate",
 					"query": "",
 					"scene": "1011"
 				}

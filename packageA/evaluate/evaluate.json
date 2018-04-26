@@ -1,4 +1,5 @@
 {
+  "disableScroll": true,
   "usingComponents": {
     "Star": "../../components/star/star",
     "Cutline": "../../components/cutoffTitle/cutoffTitle"

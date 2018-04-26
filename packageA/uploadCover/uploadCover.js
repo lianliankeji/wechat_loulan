@@ -48,17 +48,8 @@ Page({
     }).then(res => {
       console.log(res)
       if (res.ec == "000000") {
-        wx.showToast({
-          title: '上传成功',
-          success: () => {
-            let timer = setTimeout(() => {
-              clearTimeout(timer)
-              wx.navigateBack({
-                delta: 2
-              })
-            },1000)
-            
-          }
+        wx.navigateTo({
+          url: '../evaluate/evaluate'
         })
       }
 

@@ -1,6 +1,5 @@
 <view class="container">
-  <video class='video'></video>
-  <Cutline title-class="titleBg">评分</Cutline>
+  <Cutline title-class="titleBg">影片评分</Cutline>
   <view class='data flex-row-spaceBetween'>
     <view class='canvas'>
       <canvas class='cans' canvas-id="myCanvas" />
@@ -18,29 +17,37 @@
       </view>
     </view>
     <view class='star'>
-      <view class='star_head'>我来评分</view>
       <view class='item flex-row-flexStart'>
         <view class='item_title'>剧情</view>
-        <view>
+        <view class='item_star'>
           <Star total="{{total}}" bind:plotEvent="plotEvent" targets="{{'plotEvent'}}"></Star>
         </view>
       </view>
       <view class='item flex-row-flexStart'>
         <view class='item_title'>表演</view>
-        <view>
+        <view class='item_star'>
           <Star total="{{total}}" bind:showEvent="showEvent" targets="{{'showEvent'}}"></Star>
         </view>
       </view>
       <view class='item flex-row-flexStart'>
         <view class='item_title'>音乐</view>
-        <view>
+        <view class='item_star'>
           <Star total="{{total}}" bind:musicEvent="musicEvent" targets="{{'musicEvent'}}"></Star>
         </view>
       </view>
     </view>
   </view>
-  <Cutline title-class="titleBg">标签</Cutline>
-  <view class='iconlist'>
-    <view class='icon-item {{item.active == true ? "active" : ""}}' wx:for="{{iconlist}}" wx:key="{{index}}" data-index='{{index}}' bindtap='selectIcon'>{{item.name}}</view>
+  <Cutline title-class="titleBg">添加标签</Cutline>
+  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+    <image class="scroll-view-item_H" bindtap='selectIcon' data-index='{{index}}' src='{{item.active ? item.act : item.def }}' wx:for="{{iconTypeList}}" wx:key="{{index}}"></image>    
+  </scroll-view>
+  <view class='input-area flex-row-center'>
+    <input class='input' bindinput='input' value='{{inputValue}}' bindconfirm='addIcon'></input>
+    <image class='addIcon' bindtap='addIcontap' src='/image/addIcon.png'></image>
   </view>
+  <view class='iconlist'>
+    <view class='icon-item {{item.active == true ? "active" : ""}}' wx:for="{{iconlist}}" wx:key="{{index}}" data-index='{{index}}' bindtap='delete'>{{item.name}}</view>
+  </view>
+
+  <button class='button'>下一步</button>
 </view>

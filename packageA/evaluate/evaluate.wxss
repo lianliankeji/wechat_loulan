@@ -1,14 +1,12 @@
 page {
-  background-color: #000;
+  background-color: #fff;
 }
 
 .container {
-  color: #fff;
-}
-
-.video {
   width: 100%;
-  height: 400rpx;
+  color: #333;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .title {
@@ -31,6 +29,8 @@ page {
 .data {
   height: 340rpx;
   margin: 40rpx;
+  color: #333;
+  margin-top: 0;
 }
 
 .canvas {
@@ -60,14 +60,14 @@ page {
   position: absolute;
   color: red;
   left: 50%;
-  bottom: 0;
+  bottom: -4rpx;
   transform: translateX(-50%);
   text-align: center;
 }
 
 .classy {
   font-size: 28rpx;
-  color: #fff;
+  color: #333;
 }
 
 .promt {
@@ -91,12 +91,19 @@ page {
   line-height: 34rpx;
 }
 
+.item {
+  margin-bottom: 40rpx;
+}
+
 .item_title {
   margin-right: 8rpx;
   font-size: 28rpx;
   font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-  line-height: 40rpx;
+  color: #333;
+}
+
+.item_star {
+  margin-top: 6rpx;
 }
 
 .cans {
@@ -105,10 +112,24 @@ page {
   margin: 40rpx auto;
 }
 
+.scroll-view_H {
+  box-sizing: border-box;
+  padding: 40rpx;
+  white-space: nowrap;
+}
+
+.scroll-view-item_H {
+  display: inline-block;
+  width: 180rpx;
+  height: 70rpx;
+  margin-right: 30rpx;
+}
+
 .iconlist {
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
+  margin-top: 15px;
   padding-bottom: 60rpx;
 }
 
@@ -117,21 +138,46 @@ page {
   height: 60rpx;
   border: 1px gray solid;
   border-radius: 4px;
-  font-size: 24rpx;
+  font-size: 30rpx;
   font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
+  color: #333;
   line-height: 60rpx;
   text-align: center;
   margin-left: 34rpx;
   margin-top: 30rpx;
+  overflow: hidden;
 }
 
+.active {
+  background-color: #ff8201;
+}
 
-.active{
-  background-color: #FF8201;
+.input {
+  width: 600rpx;
+  height: 80rpx;
+  border: 1px #ddd solid;
+  border-radius: 4px;
+  padding-left: 10rpx;
+}
+
+.addIcon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 34rpx;
+}
+
+.button {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 4px;
+  font-size: 30rpx;
+  position: fixed;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .titleBg{
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
 }

@@ -10,7 +10,8 @@
         "analyse/analyse",
         "uploadMovie/uploadMovie",
         "uploadCover/uploadCover",
-        "play/play"
+        "play/play",
+        "evaluate/evaluate"
       ]
     }
   ],

@@ -1,0 +1,5 @@
+<view class="cutoffTitle-container">
+  <view class='line'></view>
+  <view class='title title-class'><slot></slot></view>
+  <view class='line'></view>
+</view>

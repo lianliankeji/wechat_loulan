@@ -9,37 +9,43 @@ Page({
     numplot: 5,
     numshow: 5,
     numacoustoAndoptic: 5,
-    iconlist: [
+    iconTypeList: [
       {
-        name: "惊悚",
+        def: "/image/year.png",
+        act: "/image/yearAct.png",
         active: false
       },
       {
-        name: "惊悚",
+        def: "/image/types.png",
+        act: "/image/typesAct.png",
         active: false
       },
       {
-        name: "惊悚发多",
+        def: "/image/actor.png",
+        act: "/image/actorAct.png",
         active: false
       },
       {
-        name: "惊悚5",
+        def: "/image/area.png",
+        act: "/image/areaAct.png",
         active: false
       },
       {
-        name: "惊悚0",
+        def: "/image/class.png",
+        act: "/image/classAct.png",
         active: false
       }
-    ]
+    ],
+    iconlist: []
   },
 
   plotEvent(e) {
-      console.log(e)
-      this.setData({
-        numplot: e.detail.choose + 1
-      })
+    console.log(e)
+    this.setData({
+      numplot: e.detail.choose + 1
+    })
 
-      this.initCanvas()
+    this.initCanvas()
   },
 
   showEvent(e) {
@@ -62,12 +68,83 @@ Page({
 
   selectIcon(e) {
     let index = e.target.dataset.index;
-    this.data.iconlist[index].active = !this.data.iconlist[index].active;
+
+    this.data.iconTypeList.map((item, i) => {
+      if(index == i) {
+        this.data.iconTypeList[i].active = !this.data.iconTypeList[i].active;
+      }else{
+        this.data.iconTypeList[i].active = false;
+      }
+      this.setData({
+        iconTypeList: this.data.iconTypeList
+      })
+    })
+    
+    
+  },
+
+  input(e) {
     this.setData({
-      iconlist: this.data.iconlist
+      inputValue: e.detail.value
     })
   },
+
+  addIcon(e) {
+    if (this.data.iconlist.length > 4) {
+      wx.showModal({
+        content: '标签数量不能超过5个',
+        showCancel: false
+      })
+
+      return
+    }
+    this.data.iconlist.push({ name: e.detail.value })
+    this.setData({
+      iconlist: this.data.iconlist,
+      inputValue: ""
+    })
+  },
+
+  addIcontap() {
+    console.log(this.data.iconlist.length)
+    if (this.data.iconlist.length  > 4) {
+      wx.showModal({
+        content: '标签数量不能超过5个',
+        showCancel: false
+      })
+
+      return
+    }
+    this.data.iconlist.push({ name: this.data.inputValue })
+    this.setData({
+      iconlist: this.data.iconlist,
+      inputValue: ""
+    })
+  },
+
+  delete(e) {
+    let index = e.target.dataset.index;
+    
+
+    wx.showModal({
+      content: '确认删除该标签？',
+      success: (res) => {
+        if (res.confirm) {
+          let data = this.data.iconlist.filter((item, i) => {
+            return index != i;
+          });
+
+          this.setData({
+            iconlist: data
+          })
+        } 
+      }
+    })
+    
+  },
+
   initCanvas() {
+    
     const ctx = wx.createCanvasContext('myCanvas')
     // ctx.arc(65, 65, 44, 0, 2 * Math.PI)
     // ctx.setFillStyle("red")
@@ -111,7 +188,7 @@ Page({
     let starYR = baseR/2;
     let opticYR = baseR;
 
-    
+
 
     let starplotX = starXR * (5 - numplot);
     let starplotY = starYR * (5 - numplot);
@@ -144,48 +221,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })
