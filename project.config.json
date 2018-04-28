@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.94",
-	"appid": "wxd7a8bddbf7ff8372",
+	"appid": "wx2af212ec8f31cfb0",
 	"projectname": "%E8%8E%AB%E9%AB%98",
 	"isGameTourist": false,
 	"condition": {
@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -61,17 +61,17 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "播放",
 					"pathName": "packageA/play/play",
-					"query": "",
+					"query": "videoid=7&url=http://1254251895.vod2.myqcloud.com/7666c7a9vodgzp1254251895/e301c0dc7447398155781981943/Ww8LNZaKQVcA.mp4",
 					"scene": "1011"
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "评价",
 					"pathName": "packageA/evaluate/evaluate",
-					"query": "",
+					"query": "videoid=7",
 					"scene": "1011"
 				}
 			]

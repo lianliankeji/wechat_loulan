@@ -5,15 +5,15 @@
       <canvas class='cans' canvas-id="myCanvas" />
       <view class='plot'>
         <view class='classy'>剧情</view>
-        <view class='promt'>中</view>
+        <view class='promt'>{{evaluateLevel[numplot]}}</view>
       </view>
       <view class='show'>
         <view class='classy'>表演</view>
-        <view class='promt'>好</view>
+        <view class='promt'>{{evaluateLevel[numshow]}}</view>
       </view>
       <view class='optic'>
         <view class='classy'>声光</view>
-        <view class='promt'>好</view>
+        <view class='promt'>{{evaluateLevel[numacoustoAndoptic]}}</view>
       </view>
     </view>
     <view class='star'>
@@ -39,15 +39,33 @@
   </view>
   <Cutline title-class="titleBg">添加标签</Cutline>
   <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
-    <image class="scroll-view-item_H" bindtap='selectIcon' data-index='{{index}}' src='{{item.active ? item.act : item.def }}' wx:for="{{iconTypeList}}" wx:key="{{index}}"></image>    
+    <image 
+      class="scroll-view-item_H" 
+      bindtap='selectIcon' 
+      data-types='{{item.types}}' 
+      data-index='{{index}}' 
+      data-placeholder='{{item.placeholder}}'
+      src='{{item.active ? item.act : item.def }}' 
+      wx:for="{{iconTypeList}}" 
+      wx:key="{{index}}">
+    </image>    
   </scroll-view>
   <view class='input-area flex-row-center'>
-    <input class='input' bindinput='input' value='{{inputValue}}' bindconfirm='addIcon'></input>
+    <input 
+      class='input' 
+      bindinput='input' 
+      value='{{inputValue}}' 
+      placeholder='例：{{placeholder}}'
+      placeholder-class='placeholder' 
+      bindconfirm='addIcon'></input>
     <image class='addIcon' bindtap='addIcontap' src='/image/addIcon.png'></image>
   </view>
   <view class='iconlist'>
-    <view class='icon-item {{item.active == true ? "active" : ""}}' wx:for="{{iconlist}}" wx:key="{{index}}" data-index='{{index}}' bindtap='delete'>{{item.name}}</view>
+    <view class='icon-item ' wx:for="{{iconlist}}" wx:key="{{index}}" bindtap='deletes'>
+      <image class='bg' src='/image/{{item.bg}}' data-index='{{index}}'></image>
+      <view class='word' data-index='{{index}}'>{{item.name}}</view>
+    </view>
   </view>
 
-  <button class='button'>下一步</button>
+  <button class='button' bindtap='next'>下一步</button>
 </view>

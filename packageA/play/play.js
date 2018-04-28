@@ -1,4 +1,5 @@
-// packageA/play/play.js
+import fetch from "../../utils/fetch.js"
+import {getOpenid} from "../../common/js/getOpenid.js"
 Page({
 
   /**
@@ -9,28 +10,7 @@ Page({
     numplot: 5,
     numshow: 5,
     numacoustoAndoptic: 5,
-    iconlist: [
-      {
-        name: "惊悚",
-        active: false
-      },
-      {
-        name: "惊悚",
-        active: false
-      },
-      {
-        name: "惊悚发多",
-        active: false
-      },
-      {
-        name: "惊悚5",
-        active: false
-      },
-      {
-        name: "惊悚0",
-        active: false
-      }
-    ]
+    iconlist: []
   },
 
   plotEvent(e) {
@@ -62,11 +42,75 @@ Page({
 
   selectIcon(e) {
     let index = e.target.dataset.index;
-    this.data.iconlist[index].active = !this.data.iconlist[index].active;
+    let item = this.data.iconlist[index];
+    // this.data.iconlist[index].active = !this.data.iconlist[index].active;
+    if (this.data.iconlist[index].active == false) {
+      this.savetag(item);
+      this.data.iconlist[index].active = true;
+    }
+    
     this.setData({
       iconlist: this.data.iconlist
     })
   },
+
+  savetag(item, active) {
+    fetch({
+      url: "/video/savetag",
+      data: {
+        openid: this.data.openid, 
+        videoid: item.videoid, 
+        tag: item.tag, 
+        tagtype: item.tagtype
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res)
+      if (res.ec == "000000") {
+        let data = res.data.map((item, index) => {
+          return Object.assign({}, item, { active: false })
+        })
+
+        this.setData({
+          iconlist: data
+        })
+      }
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
+  initMovie(url) {
+    this.setData({
+      moviesrc: url
+    })
+  },
+
+  initplay(videoid) {
+    fetch({
+      url: "/video/querytag",
+      data: {
+        videoid: videoid
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res)
+      if(res.ec == "000000") {
+        let data = res.data.map((item,index) => {
+          return Object.assign({},item, {active: false})
+        })
+
+        this.setData({
+          iconlist: data
+        })
+      }
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
   initCanvas() {
     const ctx = wx.createCanvasContext('myCanvas')
     // ctx.arc(65, 65, 44, 0, 2 * Math.PI)
@@ -133,10 +177,21 @@ Page({
     ctx.draw()
   },
 
+  getOpenid() {
+    getOpenid().then(openid => {
+      this.setData({
+        openid: openid
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getOpenid();
+    this.initMovie(options.url);
+    this.initplay(options.videoid);
     this.initCanvas();
   },
 

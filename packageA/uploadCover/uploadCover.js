@@ -49,7 +49,7 @@ Page({
       console.log(res)
       if (res.ec == "000000") {
         wx.navigateTo({
-          url: '../evaluate/evaluate'
+          url: '../evaluate/evaluate?videoid=' + res.data
         })
       }
 

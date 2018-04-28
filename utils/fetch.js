@@ -3,6 +3,8 @@ var ENV = "dev";
 export default function (param) {
   if (ENV && ENV == "dev" && !param.baseUrl) {
     param.baseUrl = "http://192.168.50.238:9777";
+  } else if (ENV && ENV == "release" && !param.baseUrl) {
+    param.baseUrl = "https://mogao.lianlianchains.com";
   }
 
   // if(/^\/td/.test(param.url)) {

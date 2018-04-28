@@ -1,5 +1,11 @@
 <view class="container">
-  <image bindtap='play' class='bg' src="{{bg}}"></image>
+  <image 
+    bindtap='play' 
+    class='bg' 
+    src="{{bg}}" 
+    bindtouchstart='bindtouchstart'
+    bindtouchmove='bindtouchmove'
+    bindtouchend='bindtouchend'></image>
   <image class='photo' bindtap='photo' src='{{photo}}'></image>
   <image class='search' src='{{search}}'></image>
   <view class='praise-content'>

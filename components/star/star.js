@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    choose: -1,
+    choose: 4,
   },
 
   /**
@@ -19,7 +19,6 @@ Component({
    */
   methods: {
     choose(e) {
-      console.log()
       this.setData({
         choose: e.target.dataset.index
       })

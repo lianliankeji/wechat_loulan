@@ -1,5 +1,5 @@
 <view class="container">
-  <video class='video'></video>
+  <video class='video' src='{{moviesrc}}'></video>
   <Cutline title-class="titleBg">评分</Cutline>
   <view class='data flex-row-spaceBetween'>
     <view class='canvas'>
@@ -41,6 +41,6 @@
   </view>
   <Cutline title-class="titleBg">标签</Cutline>
   <view class='iconlist'>
-    <view class='icon-item {{item.active == true ? "active" : ""}}' wx:for="{{iconlist}}" wx:key="{{index}}" data-index='{{index}}' bindtap='selectIcon'>{{item.name}}</view>
+    <view class='icon-item {{item.active == true ? "active" : ""}}' wx:for="{{iconlist}}" wx:key="{{index}}" data-index='{{index}}' bindtap='selectIcon'>{{item.tag}}</view>
   </view>
 </view>
