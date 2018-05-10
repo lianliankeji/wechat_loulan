@@ -1,11 +1,11 @@
 <view class="container">
-  <!-- <view class='analysing'>
+  <view class='analysing' hidden='{{state != 0 ? true : false}}'>
     <image class='img' src='/image/analyse.png'></image>
     <view class='info1'>AI机器人正在分析数据…</view>
     <view class='info2'>完成运算大概需要5～20秒 请耐心等待</view>
   </view>
 
-  <!-- <view class='faild'>
+   <view class='faild' hidden='{{state != 2 ? true : false}}'>
     <image class='img' src='/image/faild.png'></image>
     <view class='info1'>上传失败</view>
     <view class='bottom'>
@@ -18,11 +18,11 @@
     </view>
 
     <view class='reupload' bindtap='reupload'>重新上传</view>
-  </view> -->
+  </view> 
 
 
-  <view class='success'>
-    <image class='img' src='/image/analyse.png'></image>
+  <view class='success' hidden='{{state != 1 ? true : false}}'>
+    <image class='img' src='/image/success.png'></image>
     <view class='info1'>上传成功！</view>
     <view class='info2'>恭喜获得奖励积分390DCT</view>
     <view class='bottom'>

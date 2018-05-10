@@ -1,9 +1,12 @@
+import { getOpenid } from "../../common/js/getOpenid.js"
+import fetch from "../../utils/fetch.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    state:  0,
     addModal: true,
     addValue: "",
     iconlist:[
@@ -62,6 +65,7 @@ Page({
   },
 
   reupload() {
+    let that = this;
     wx.chooseImage({
       // count: 1, // 默认9
       // sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -72,22 +76,65 @@ Page({
         var tempFilePaths = res.tempFilePaths
         console.log(tempFilePaths)
 
-        // wx.uploadFile({
-        //   // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
-        //   url: 'https://store.lianlianchains.com/exchange/upload', //仅为示例，非真实的接口地址
-        //   filePath: tempFilePaths[0],
-        //   name: 'test',
-        //   formData: {
-        //     'openid': wx.getStorageSync('user').openid
-        //   },
-        //   success: function (res) {
-        //     var data = res.data
-        //     //do something
-        //     resolve(res)
-        //     console.log(data)
-        //   }
-        // })
+
+        wx.uploadFile({
+          url: 'https://mogao.lianlianchains.com/mogaojava/uploadimage', //仅为示例，非真实的接口地址
+          // url: 'https://store.lianlianchains.com/exchange/upload', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'image',
+          formData: {
+            openid: that.data.openid
+          },
+          success: function (res) {
+
+            console.log(res)
+
+            if (res.statusCode == 200) {
+
+              that.recognite(res.data, that.data.openid)
+
+            }
+
+
+          }
+        })
       }
+    })
+  },
+
+  recognite(url, openid) {
+    fetch({
+      // baseUrl: "http://192.168.50.238:9555",
+      url: "/mogaojava/recognition",
+      data: {
+        url: "http://mogao.lianlianchains.com/images/" + url,
+        openid: openid
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res)
+      if(res.ec == "000000" && res.data.flag == 1) {
+        this.setData({
+          state: 1
+        })
+      } else if (res.ec == "000000" && res.data.flag == 0) {
+        this.setData({
+          state: 2
+        })
+      }else{
+
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
+  getOpenid(url) {
+    getOpenid().then(openid => {
+      this.recognite(url, openid);
+      this.setData({
+        openid: openid
+      })
     })
   },
 
@@ -95,7 +142,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // this.recognite(options.url);
+    this.getOpenid(options.url)
   },
 
   /**

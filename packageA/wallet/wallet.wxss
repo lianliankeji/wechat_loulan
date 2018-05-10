@@ -1,0 +1,159 @@
+.container {
+}
+
+.container .top {
+  width: 100%;
+  height: 360rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.top .img {
+  width: 100%;
+  height: 100%;
+}
+
+.top .data {
+  position: absolute;
+  left: 0;
+  top: 60rpx;
+  width: 100%;
+  align-items: flex-start;
+  padding: 0 60rpx;
+  box-sizing: border-box;
+}
+
+.data .avatar {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+
+.data .title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Light;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
+  margin-bottom: 40rpx;
+}
+
+.data .num {
+  font-size: 30px;
+  font-family: PingFang-SC-Bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42px;
+  margin-right: 10rpx;
+}
+
+.data .unit {
+  font-size: 14px;
+  font-family: PingFang-SC-Light;
+  color: rgba(51, 51, 51, 1);
+  line-height: 20px;
+}
+
+.data .right {
+  text-align: center;
+}
+
+.data .right .word {
+  margin: 12rpx auto 0;
+  width: 50px;
+  height: 16px;
+  background: rgba(255, 255, 255, 1);
+  opacity: 0.5002;
+  border-radius: 8px;
+  font-size: 10px;
+  font-family: PingFang-SC-Regular;
+  color: rgba(0, 0, 0, 1);
+  line-height: 14px;
+  text-align: center;
+}
+
+.report {
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(253, 143, 47, 1);
+  line-height: 40px;
+}
+
+.report .img {
+  width: 40rpx;
+  height: 32rpx;
+  margin-right: 22rpx;
+}
+
+.line {
+  height: 2px;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+  background-color: #ececec;
+}
+
+.info {
+  padding: 40rpx;
+}
+
+.info .header {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+  /* padding: 0 40rpx; */
+}
+
+.header-title-left {
+  width: 40%;
+  text-align: center;
+}
+
+.header-title {
+  width: 30%;
+  text-align: center;
+}
+
+.item {
+  font-size: 14px;
+  font-family: PingFang-SC-Regular;
+  color: rgba(153, 153, 153, 1);
+  line-height: 20px;
+  margin-top: 30rpx;
+}
+
+.item .right {
+  width: 30%;
+  text-align: center;
+}
+
+.avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-left: 24rpx;
+  margin-right: 12rpx;
+}
+
+.titleBg {
+  background-color: #fff;
+  color: #333;
+}
+
+.bottom {
+  padding: 40rpx 40rpx 0;
+}
+
+.bottom .img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.bottom .word {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(102, 102, 102, 1);
+  line-height: 40rpx;
+  margin-left: 20rpx;
+}

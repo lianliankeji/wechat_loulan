@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "1.9.98",
 	"appid": "wx2af212ec8f31cfb0",
 	"projectname": "%E8%8E%AB%E9%AB%98",
 	"isGameTourist": false,
@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -72,6 +72,41 @@
 					"name": "评价",
 					"pathName": "packageA/evaluate/evaluate",
 					"query": "videoid=7",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "钱包",
+					"pathName": "packageA/wallet/wallet",
+					"query": "videoid=7&url=http://1254251895.vod2.myqcloud.com/7666c7a9vodgzp1254251895/e301c0dc7447398155781981943/Ww8LNZaKQVcA.mp4",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "广告竞拍",
+					"pathName": "packageA/auction/auction",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "竞拍2",
+					"pathName": "packageA/auctionDetail/auctionDetail",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 9,
+					"name": "植入",
+					"pathName": "packageA/implant/implant",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "DCT明细",
+					"pathName": "packageA/DCTDetail/DCTDetail",
+					"query": "",
 					"scene": "1011"
 				}
 			]

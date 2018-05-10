@@ -14,6 +14,15 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const duringTime = () => {
+  let date = new Date();
+  const hour = date.getHours()
+
+  return formatNumber(hour);
+}
+
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  duringTime: duringTime
 }

@@ -1,20 +1,20 @@
 <view class="container">
-  <video class='video' src='{{moviesrc}}'></video>
+  <video class='video' autoplay src='{{moviesrc}}' bindfullscreenchange="fullscreen"></video>
   <Cutline title-class="titleBg">评分</Cutline>
   <view class='data flex-row-spaceBetween'>
     <view class='canvas'>
-      <canvas class='cans' canvas-id="myCanvas" />
+      <canvas class='cans' canvas-id="myCanvas"  hidden="{{hidden}}"/>
       <view class='plot'>
         <view class='classy'>剧情</view>
-        <view class='promt'>中</view>
+        <view class='promt'>{{evaluateLevel[numplot]}}</view>
       </view>
       <view class='show'>
         <view class='classy'>表演</view>
-        <view class='promt'>好</view>
+        <view class='promt'>{{evaluateLevel[numshow]}}</view>
       </view>
       <view class='optic'>
         <view class='classy'>声光</view>
-        <view class='promt'>好</view>
+        <view class='promt'>{{evaluateLevel[numacoustoAndoptic]}}</view>
       </view>
     </view>
     <view class='star'>
@@ -22,19 +22,19 @@
       <view class='item flex-row-flexStart'>
         <view class='item_title'>剧情</view>
         <view>
-          <Star total="{{total}}" bind:plotEvent="plotEvent" targets="{{'plotEvent'}}"></Star>
+          <Star total="{{total}}" bind:plotEvent="plotEvent" targets="{{'plotEvent'}}" play="true"></Star>
         </view>
       </view>
       <view class='item flex-row-flexStart'>
         <view class='item_title'>表演</view>
         <view>
-          <Star total="{{total}}" bind:showEvent="showEvent" targets="{{'showEvent'}}"></Star>
+          <Star total="{{total}}" bind:showEvent="showEvent" targets="{{'showEvent'}}" play="true"></Star>
         </view>
       </view>
       <view class='item flex-row-flexStart'>
-        <view class='item_title'>音乐</view>
+        <view class='item_title'>声光</view>
         <view>
-          <Star total="{{total}}" bind:musicEvent="musicEvent" targets="{{'musicEvent'}}"></Star>
+          <Star total="{{total}}" bind:musicEvent="musicEvent" targets="{{'musicEvent'}}" play="true"></Star>
         </view>
       </view>
     </view>

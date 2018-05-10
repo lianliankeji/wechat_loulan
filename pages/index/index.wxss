@@ -58,6 +58,16 @@ page {
   height: 60rpx;
 }
 
+.shareButton{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+}
+
 .total{
   font-size: 24rpx;
   font-family: PingFang-SC-Medium;
@@ -102,7 +112,7 @@ page {
 }
 
 .bottom .medium {
-  width: 60%;
+  width: 430rpx;
 }
 
 .bottom .medium .title {

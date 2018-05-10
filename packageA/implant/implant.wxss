@@ -1,0 +1,89 @@
+.top {
+  height: 400rpx;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.top .info {
+  text-align: center;
+  padding-top: 66rpx;
+  color: #fff;
+}
+
+.info .during {
+  font-size: 12px;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 37, 37, 1);
+  line-height: 17px;
+  margin-top: 32rpx;
+  margin-bottom: 26rpx;
+}
+
+.info .endtime {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40rpx;
+}
+
+.content {
+  margin-top: 40rpx;
+  padding: 0 60rpx;
+}
+
+.section{
+  margin-top: 40rpx;
+}
+
+.section-title {
+  font-size: 15px;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  line-height: 21px;
+  margin-right: 40rpx;
+  min-width: 120rpx;
+}
+
+.section-input{
+  border-bottom: 1px #ececec solid;
+}
+
+.add {
+  align-items: flex-start;
+}
+
+.content .addMovie {
+  width: 472rpx;
+  height: 280rpx;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 280rpx;
+  border: 1px #ececec solid;
+}
+
+.content .icon {
+  width: 74rpx;
+  height: 58rpx;
+}
+
+.prompt {
+  font-size: 12px;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 37, 37, 1);
+  line-height: 17px;
+  margin-top: 26rpx;
+}
+
+.button {
+  width: 670rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #fd8f2f;
+  color: #fff;
+  font-size: 15px;
+  font-family: PingFang-SC-Medium;
+  position: fixed;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}

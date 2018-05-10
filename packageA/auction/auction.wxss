@@ -1,0 +1,73 @@
+page {
+  background: rgba(244, 244, 244, 1);
+}
+
+.container {
+  padding: 40rpx;
+}
+
+.item {
+  width: 670rpx;
+  height: 260rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-bottom: 40rpx;
+}
+
+.item .img {
+  height: 260rpx;
+  width: 200rpx;
+}
+
+.right {
+  width: 470rpx;
+  padding: 40rpx 20rpx 0 30rpx;
+  height: 100%;
+}
+
+.right .title {
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 50rpx;
+}
+
+.right .medium {
+  font-size: 12px;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  line-height: 17px;
+  margin-top: 20rpx;
+  margin-bottom: 46rpx;
+}
+
+.right .up{
+  width: 12rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.right .count{
+  margin-left: 60rpx;
+}
+
+.right .time {
+  font-size: 12px;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  line-height: 17px;
+}
+
+.right .button {
+  width: 120rpx;
+  height: 60rpx;
+  background: rgba(253, 143, 47, 1);
+  border-radius: 4px;
+  line-height: 60rpx;
+  font-size: 14px;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  margin: 0;
+  padding: 0;
+}

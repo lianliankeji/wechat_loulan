@@ -1,0 +1,13 @@
+<view class="container">
+  <view class='item flex-row-spaceBetween' wx:for="{{20}}" wx:key="{{index}}">
+    <view class='flex-row-flexStart'>
+      <image class='img' src='/image/analyse.png'></image>
+      <view>
+        <view class='title'>上传影片</view>
+        <view class='time'>2018/05/09 12:09</view>
+      </view>
+    </view>
+
+    <view class='score'>+30</view>
+  </view>
+</view>

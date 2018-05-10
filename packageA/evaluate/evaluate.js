@@ -94,7 +94,7 @@ Page({
 
   savescore() {
     fetch({
-      url: "/video/savescore",
+      url: "/mogaojava/savescore",
       data: {
         openid: this.data.openid,
         videoid: this.data.videoid,
@@ -188,7 +188,7 @@ Page({
 
   savetag(name, tagtype) {
     fetch({
-      url: "/video/savetag",
+      url: "/mogaojava/savetag",
       data: {
         openid: this.data.openid,
         videoid: this.data.videoid,
@@ -207,7 +207,7 @@ Page({
 
   deletetag(name, tagtype) {
     fetch({
-      url: "/video/deletetag",
+      url: "/mogaojava/deletetag",
       data: {
         openid: this.data.openid,
         videoid: this.data.videoid,

@@ -1,0 +1,20 @@
+<view class="container">
+  <view class='item flex-row-spaceBetween' wx:for="{{list}}" wx:key="{{index}}">
+    <image class='img' src='http://store.lianlianchains.com/images/{{item.image}}'></image>
+    <view class='right'>
+      <view class='title'>{{item.name}}</view>
+      <view class='medium flex-row-flexStart'>
+        <view class='flex-row-flexEnd'>
+          <image class='up' src='/image/up.png'></image>
+          <text>上升</text>
+        </view>
+        <view class='count'>播放次数 3w</view>
+      </view>
+
+      <view class='flex-row-spaceBetween'>
+        <view class='time'>广告植入{{start}}-{{end}}时段</view>
+        <button class='button' bindtap='bindHandleClick' data-state='{{item.state}}' disabled='{{item.state == 2}}'>{{item.name}}</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<view class="container">
+  <view class='top'>
+    <view class='info'>
+      <view>狂暴巨兽</view>
+      <view class='during'>广告植入8:00-9:00时段竞拍</view>
+      <view class='endtime'>据拍卖结束剩余56分26秒</view>
+    </view>
+    <view class='nav flex-row-center'>
+      <view 
+        class='nav-item {{item.select == true ? "nav-item-active" : ""}}' 
+        wx:for="{{nav}}" 
+        wx:key="{{index}}"
+        data-index="{{index}}"
+        bindtap='select'>{{item.name}}</view>
+    </view>
+  </view>
+  <view class='content'>
+    <view class='section flex-row-flexStart'>
+      <view class='section-title'>当前价</view>
+      <input class='section-input'></input>
+      <view class='change'>
+        <image bindtap='reduce' class='icon' src='{{icon1}}'></image>
+        <image bindtap='increase' class='icon' src='{{icon2}}'></image>
+      </view>
+    </view>
+    <view class='section flex-row-flexStart'>
+      <view class='section-title'>保证金</view>
+      <input class='section-input'></input>
+      <button class='invoke'>充值</button>
+    </view>
+  </view>
+
+  <button class='button'>提交</button>
+</view>

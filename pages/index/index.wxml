@@ -4,32 +4,32 @@
     class='bg' 
     src="{{bg}}" 
     bindtouchstart='bindtouchstart'
-    bindtouchmove='bindtouchmove'
     bindtouchend='bindtouchend'></image>
   <image class='photo' bindtap='photo' src='{{photo}}'></image>
   <image class='search' src='{{search}}'></image>
-  <view class='praise-content'>
+  <view class='praise-content' bindtap='praise'>
     <image class='praise' src='{{praise}}'></image>
     <view class='total'>{{praiseNum}}</view>
   </view>
   <view class='share-content'>
     <image class='share' src='{{share}}'></image>
     <view class='total'>{{shareNum}}</view>
+    <button class='shareButton' open-type='share'></button>
   </view>
   <view class='bottom flex-row-spaceBetween'>
     <view class='left flex-row-flexStart'>
-      <view class='score'><text class='num'>8.9</text><text class='unit'>分</text></view>
+      <view class='score'><text class='num'>{{score}}</text><text class='unit'>分</text></view>
       <view class='medium'>
-        <view class='title'>狂暴巨兽</view>
-        <view class='desc'>简介简介简介简介简介简介简介简简介简介简介简介简介简介简介简简介简介简介简介简介简介简介简</view>
+        <view class='title'>{{name}}</view>
+        <view class='desc'>{{description}}</view>
         <view class='icon'>
-          <view class='icon-item' wx:for="{{iconlist}}" wx:key="{{index}}">#{{item}}</view>
+          <view class='icon-item' wx:for="{{iconlist}}" wx:key="{{index}}">#{{item.tag}}</view>
         </view>
       </view>
     </view>
 
     <view class='right'>
-      <image class='avatar' bindtap='bindUserTap' src='{{avatarUrl}}'></image>
+      <image class='avatar' bindtap='bindWalletView' src='{{avatarUrl}}'></image>
     </view>
   </view>
 </view>

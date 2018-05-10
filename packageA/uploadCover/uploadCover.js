@@ -36,7 +36,7 @@ Page({
 
   uploadAll() {
     fetch({
-      url: "/video/insert",
+      url: "/mogaojava/insert",
       data: {
         name: this.data.title, 
         description: this.data.info, 
@@ -59,51 +59,47 @@ Page({
   },
 
   next() {
-    this.getOpenid().then(openid => {
-      const uploadTask = wx.uploadFile({
-        // url: 'https://store.lianlianchains.com/video/upload/',
-        url: 'http://192.168.50.238:9777/mogao/uploadimage',
-        filePath: this.data.coversrc,
-        name: 'image',
-        formData: {
-          'openid': openid
-        },
-        success: (res) => {
-          this.setData({
-            openid: openid,
-            image: res.data
-          },() => {
-            this.uploadAll();
-          })
-          
-        }
-      });
-
-      uploadTask.onProgressUpdate((res) => {
-
-        this.setData({
-          progress: res.progress
-        })
-
-        // console.log('上传进度', res.progress)
-        // console.log('已经上传的数据长度', res.totalBytesSent)
-        // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
-      })
-
-    })
-    
+    this.uploadAll();
   },
 
   addCover() {
-    chooseImage().then(res => {
-      this.setData({
-        coversrc: res.tempFilePaths[0],
-        show: true,
-        reupshow: true
-      }, () => {
-        this.setData({
-          buttonDisabled: !this.data.coversrc || !this.data.info || !this.data.title
+    chooseImage().then(response => {
+      this.getOpenid().then(openid => {
+        const uploadTask = wx.uploadFile({
+          // url: 'https://store.lianlianchains.com/video/upload/',
+          url: 'https://mogao.lianlianchains.com/mogaojava/uploadimage',
+          filePath: response.tempFilePaths[0],
+          name: 'image',
+          formData: {
+            'openid': openid
+          },
+          success: (res) => {
+            this.setData({
+              coversrc: response.tempFilePaths[0],
+              openid: openid,
+              image: res.data,
+              show: true,
+              reupshow: true
+            }, () => {
+              this.setData({
+                buttonDisabled: !this.data.coversrc || !this.data.info || !this.data.title
+              })
+            })
+
+          }
+        });
+
+        uploadTask.onProgressUpdate((res) => {
+
+          this.setData({
+            progress: res.progress
+          })
+
+          // console.log('上传进度', res.progress)
+          // console.log('已经上传的数据长度', res.totalBytesSent)
+          // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
         })
+
       })
     })
   },

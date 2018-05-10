@@ -86,7 +86,7 @@ page {
 }
 
 .star_head {
-  margin-bottom: 46rpx;
+  margin-bottom: 30rpx;
   font-size: 24rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(253, 143, 47, 1);
@@ -98,7 +98,7 @@ page {
   font-size: 28rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(255, 255, 255, 1);
-  line-height: 40rpx;
+  line-height: 70rpx;
 }
 
 .cans {

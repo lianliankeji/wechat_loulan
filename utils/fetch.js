@@ -1,5 +1,5 @@
-var ENV = "dev";
-// var ENV = "release"
+// var ENV = "dev";
+var ENV = "release"
 export default function (param) {
   if (ENV && ENV == "dev" && !param.baseUrl) {
     param.baseUrl = "http://192.168.50.238:9777";
@@ -7,9 +7,9 @@ export default function (param) {
     param.baseUrl = "https://mogao.lianlianchains.com";
   }
 
-  // if(/^\/td/.test(param.url)) {
-  //   param.baseUrl = "www.lianlianchains.com";
-  // }
+  if(/^\/mg/.test(param.url)) {
+    param.baseUrl = "https://140.143.211.161";
+  }
 
   return new Promise((resolve, reject) => {
     wx.request({

@@ -1,0 +1,49 @@
+<view class="container">
+  <view class='top'>
+    <image class='img' src='/image/bg1.png'></image>
+    <view class='data flex-row-spaceBetween'>
+      <view class='left'>
+        <view class='title'>累计奖励</view>
+        <view><text class='num'>{{result.restamt}}</text><text class='unit'>DCT</text></view>
+      </view>
+      <view class='right flex-column-center'>
+        <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+        <view class='word'>第{{result.rank}}名</view>
+      </view>
+    </view>
+    
+  </view>
+  <view class='report flex-row-center'>
+    <image class='img' src='/image/horn.png'></image>
+    <text>{{"疯狂的包子"}}上传了一张电影票</text>
+  </view>
+  <view class='line'></view>
+  <view class='info'>
+    <view class='header flex-row-spaceBetween'>
+      <text class='header-title-left'>用户排名</text>
+      <text class='header-title'>积分奖励</text>
+    </view>
+    <view class='content'>
+      <view class='item flex-row-spaceBetween' wx:for="{{result.topn}}" wx:key="{{item.rank}}">
+        <view class='left flex-row-flexStart'>
+          <view class='SerialNum'>{{item.rank}}</view>
+          <image class='avatar' src="{{item.picture}}"></image>
+          <view>{{item.nickname}}</view>
+        </view>
+        
+        <view class='right'>{{item.restamt}}</view>
+      </view>
+    </view>
+  </view>
+  <Cutline title-class="titleBg">影视生活</Cutline>
+  <view class='bottom flex-row-spaceBetween'>
+    <view class='flex-row-flexStart' bindtap='bindTicketUpload'>
+      <image class='img' src='/image/mining.png'></image>
+      <text class='word'>票根挖矿</text>
+    </view>
+    <view class='flex-row-flexStart' bindtap='bindAuctionTap'>
+      <image class='img' src='/image/ad.png'></image>
+      <text class='word'>广告投放</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<view class="container">
+  <view class='top'>
+    <view class='info'>
+      <view>狂暴巨兽</view>
+      <view class='during'>广告植入8:00-9:00时段竞拍</view>
+      <view class='endtime'>请在7:50前上传待植入广告视频</view>
+    </view>
+  </view>
+  <view class='content'>
+    <view class='section add flex-row-flexStart'>
+      <view class='section-title'>上传视频</view>
+      <view class='addMovie'>
+        <image class='icon' src='/image/add.png'></image>
+      </view>
+    </view>
+    <view class='section flex-row-flexStart'>
+      <view class='section-title'>跳转链接</view>
+      <input class='section-input'></input>
+    </view>
+    <view class='section flex-row-flexStart'>
+      <view class='section-title'>广告费用</view>
+      <input class='section-input'></input>
+    </view>
+    <view class='prompt'>截止时间前未提交信息/支付广告费用将视为放弃，系统将扣 除您拍卖时的保证金</view>
+  </view>
+
+  <button class='button'>提交</button>
+</view>

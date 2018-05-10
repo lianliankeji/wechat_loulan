@@ -11,7 +11,12 @@
         "uploadMovie/uploadMovie",
         "uploadCover/uploadCover",
         "play/play",
-        "evaluate/evaluate"
+        "evaluate/evaluate",
+        "wallet/wallet",
+        "auction/auction",
+        "auctionDetail/auctionDetail",
+        "implant/implant",
+        "DCTDetail/DCTDetail"
       ]
     }
   ],

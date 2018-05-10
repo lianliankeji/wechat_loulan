@@ -1,4 +1,5 @@
 <view class="container">
+  <progress hidden='{{hiddenPro}}' percent="{{progress}}" active />
   <view class='head flex-row-spaceBetween'>
     <view class='left flex-row-flexStart'>
       <image class='movieIcon' src='{{movieIcon}}'></image>

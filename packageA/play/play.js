@@ -6,11 +6,33 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hidden: false,
     total: 5,
-    numplot: 5,
-    numshow: 5,
-    numacoustoAndoptic: 5,
+    evaluateLevel: {
+      1: "差",
+      2: "较差",
+      3: "中",
+      4: "较好",
+      5: "好"
+    },
+    numplot: 0,
+    numshow: 0,
+    numacoustoAndoptic: 0,
     iconlist: []
+  },
+
+  fullscreen(e) {
+    // console.log("fullscreen", e.detail.fullScreen )
+    let IsfullScreen = e.detail.fullScreen;
+    if (IsfullScreen == true) {
+      this.setData({
+        hidden:true
+      })
+    }else{
+      this.setData({
+        hidden: false
+      })
+    }
   },
 
   plotEvent(e) {
@@ -56,7 +78,7 @@ Page({
 
   savetag(item, active) {
     fetch({
-      url: "/video/savetag",
+      url: "/mogaojava/savetag",
       data: {
         openid: this.data.openid, 
         videoid: item.videoid, 
@@ -88,8 +110,11 @@ Page({
   },
 
   initplay(videoid) {
+    this.setData({
+      videoid: videoid
+    })
     fetch({
-      url: "/video/querytag",
+      url: "/mogaojava/querytag",
       data: {
         videoid: videoid
       },
@@ -102,13 +127,20 @@ Page({
         })
 
         this.setData({
-          iconlist: data
+          iconlist: data,
+          videoid: videoid
         })
       }
 
     }).catch(err => {
       console.log(err)
     })
+
+  },
+
+  initStar() {
+    let videoid = this.data.videoid
+    
   },
 
   initCanvas() {
@@ -190,7 +222,7 @@ Page({
    */
   onLoad: function (options) {
     this.getOpenid();
-    this.initMovie(options.url);
+    this.initMovie(options.moviesrc);
     this.initplay(options.videoid);
     this.initCanvas();
   },
@@ -206,7 +238,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**
@@ -220,7 +252,21 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    fetch({
+      url: "/mogaojava/savescore",
+      data: {
+        openid: this.data.openid,
+        videoid: this.data.videoid,
+        story: this.data.numplot,
+        act: this.data.numshow,
+        sound: this.data.numacoustoAndoptic,
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   /**
