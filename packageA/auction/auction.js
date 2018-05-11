@@ -1,74 +1,82 @@
 import fetch from "../../utils/fetch.js"
-import { duringTime} from '../../utils/util.js'
+import { getOpenid } from "../../common/js/getOpenid.js"
+import { duringTime } from '../../utils/util.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        state: 0,
-        name: "竞拍"
-      },
-      {
-        state: 1,
-        name: "植入"
-      },
-      {
-        state: 2,
-        name: "已截止"
-      }
-    ]
-  },
-
-  bindHandleClick(e) {
-    console.log(e.target.dataset.state);
-    let state = e.target.dataset.state;
-    if (state == 0) {
-      wx.navigateTo({
-        url: '../auctionDetail/auctionDetail?endtime='+ this.data.end
-      })
-    }
-    else if (state == 1) {
-      wx.navigateTo({
-        url: '../implant/implant'
-      })
+    flagMap: {
+      "0": "竞拍",
+      "1": "已截止",
+      "2": "植入"
     }
   },
 
-  getMovieList() {
+  startAuction(videoid, info) {
+    let now = this.data.data.now;
     fetch({
-      url: "/mogaojava/queryvideo",
+      url: "/mogaojava/startauction",
       data: {
-
+        videoid: videoid,
+        starttime: now.substr(0, now.length - 2) + this.data.startHour,
+        endtime: now.substr(0, now.length - 2) + this.data.endHour
       },
-      method: "GET"
+      method: "POST"
     }).then(res => {
-      if(res.ec == "000000") {
-        this.setData({
-          list: res.data
-        })
-      }
+      wx.navigateTo({
+        url: '../auctionDetail/auctionDetail?videoid=' + videoid + "&starttime=" + res.data.starttime + "&endtime=" + res.data.endtime + "&info=" + info
+      })
       
+
     }).catch(err => {
       console.log(err)
     })
+  },
 
+  bindHandleClick(e) {
+    let state = e.target.dataset.flag;
+    let info = e.target.dataset.iteminfo;
+    let videoid = e.target.dataset.videoid;
+    if (state == 0) {
+      this.startAuction(videoid, JSON.stringify(info));
+
+    }
+    else if (state == 2) {
+
+
+    }
+  },
+
+
+
+  getMovieList(openid) {
     fetch({
-      url: "/mogaojava/queryparam",
+      url: "/mogaojava/querybyplaytime",
       data: {
-
+        openid: openid
       },
       method: "GET"
     }).then(res => {
-      let hour = duringTime() - 0;
-      this.setData({
-        start: hour + res.data.start + ":00",
-        end: hour + res.data.end + ":00"
-      })
+      if (res.ec == "000000") {
+        this._duringView(res.data.now, res.data.start, res.data.end)
+        this.setData({
+          data: res.data
+        })
+      }
+
     }).catch(err => {
       console.log(err)
+    })
+  },
+
+  getOpenid(url) {
+    getOpenid().then(openid => {
+      this.getMovieList(openid)
+      this.setData({
+        openid: openid
+      })
     })
   },
 
@@ -76,55 +84,70 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMovieList()
+    this.getOpenid();
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
+  },
+  //内部计算
+  _duringView(now, start, end) {
+    let startH = now.substr(now.length - 2) - 0 + start + ":00";
+    let endH = now.substr(now.length - 2) - 0 + end + ":00";
+
+    this.setData({
+      start: startH,
+      end: endH,
+      startHour: now.substr(now.length - 2) - 0 + start + "00",
+      endHour: now.substr(now.length - 2) - 0 + end + "00"
+    })
+
+    console.log(startH, endH)
   }
 })

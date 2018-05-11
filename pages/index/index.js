@@ -261,7 +261,7 @@ Page({
           },
           method: "POST"
         }).then(response => {
-          if (response.data.code == 0 && response.data.result == 0) {
+          if (response.code == 0 && response.result == 0) {
             wx.request({
               url: "https://140.143.211.161/mg/register",
               data: {
@@ -275,7 +275,7 @@ Page({
 
               }
             });
-          } else if (res.code == 0 && res.result == 1) {
+          } else if (response.code == 0 && response.result == 1) {
 
 
           }
