@@ -66,7 +66,7 @@ Page({
     chooseImage().then(response => {
       this.getOpenid().then(openid => {
         const uploadTask = wx.uploadFile({
-          // url: 'https://store.lianlianchains.com/video/upload/',
+          // url: 'http://192.168.50.238:9555/mogaojava/uploadimage',
           url: 'https://mogao.lianlianchains.com/mogaojava/uploadimage',
           filePath: response.tempFilePaths[0],
           name: 'image',
@@ -74,6 +74,14 @@ Page({
             'openid': openid
           },
           success: (res) => {
+            console.log(res);
+            if (/"999999"/.test(res.data)) {
+              wx.showToast({
+                title: '上传失败',
+              })
+
+              return
+            }
             this.setData({
               coversrc: response.tempFilePaths[0],
               openid: openid,

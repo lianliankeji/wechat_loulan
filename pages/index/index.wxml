@@ -1,12 +1,12 @@
 <view class="container">
   <image 
-    bindtap='play' 
     class='bg' 
     src="{{bg}}" 
+    mode='aspectFill'
     bindtouchstart='bindtouchstart'
     bindtouchend='bindtouchend'></image>
   <image class='photo' bindtap='photo' src='{{photo}}'></image>
-  <image class='search' src='{{search}}'></image>
+  <!-- <image class='search' src='{{search}}'></image> -->
   <view class='praise-content' bindtap='praise'>
     <image class='praise' src='{{praise}}'></image>
     <view class='total'>{{praiseNum}}</view>
@@ -23,13 +23,14 @@
         <view class='title'>{{name}}</view>
         <view class='desc'>{{description}}</view>
         <view class='icon'>
-          <view class='icon-item' wx:for="{{iconlist}}" wx:key="{{index}}">#{{item.tag}}</view>
+          <view class='icon-item' wx:for="{{iconlist}}" wx:key="{{index}}" hidden='{{ index > 3}}'>#{{item.tag}}</view>
         </view>
       </view>
     </view>
 
     <view class='right'>
       <image class='avatar' bindtap='bindWalletView' src='{{avatarUrl}}'></image>
+      <button class='auth' bindgetuserinfo="getUserInfo" open-type='getUserInfo'></button>
     </view>
   </view>
 </view>

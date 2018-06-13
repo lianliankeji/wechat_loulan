@@ -1,6 +1,8 @@
 page {
   height: 100%;
+  background-color: #000;
 }
+
 
 .container {
   height: 100%;
@@ -11,7 +13,7 @@ page {
 
 .container .bg {
   height: 100%;
-  width: 100%;
+   width: 100%; 
 }
 
 .photo {
@@ -126,8 +128,8 @@ page {
   font-size: 24rpx;
   font-family: PingFang-SC-Regular;
   color: rgba(255, 255, 255, 1);
-  line-height: 34rpx;
-  height: 34px;
+  line-height: 24rpx;
+  height: 24px;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 10rpx;
@@ -138,7 +140,7 @@ page {
   font-family: PingFang-SC-Medium;
   color: rgba(253, 143, 47, 1);
   line-height: 34rpx;
-  margin-top: 10rpx;
+  /* margin-top: 4rpx; */
 }
 
 .icon-item {
@@ -147,6 +149,7 @@ page {
 }
 
 .right {
+  width: 80rpx;
   height: 100%;
   position: relative;
 }
@@ -158,4 +161,14 @@ page {
   position: absolute;
   right: 0;
   bottom: 40rpx;
+}
+
+.auth{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }

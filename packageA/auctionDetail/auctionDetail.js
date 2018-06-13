@@ -1,14 +1,18 @@
 import fetch from "../../utils/fetch.js"
 import { getOpenid } from "../../common/js/getOpenid.js"
+import { nearTime } from '../../utils/util.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    safeMoneys:500,
-    nowPrice:0,
+    safeMoneys: 1,
+    nowPrice: 1,
+    minNowPrice: 1,
     nowSelect: "middleprice",
+    nowId: "middleopenid",
+    nowType: 2,
     safeMoney: 0,
     icon1: "/image/jian1.png",
     icon2: "/image/jia2.png",
@@ -31,7 +35,7 @@ Page({
 
   bindNowInput(e) {
     this.setData({
-      nowPrice: e.detail.value,
+      nowPrice: Math.max(e.detail.value, this.data.minNowPrice),
       safeMoney: (e.detail.value * 0.1).toFixed(0)
     })
   },
@@ -40,7 +44,7 @@ Page({
     this.setData({
       icon1: "/image/jian2.png",
       icon2: "/image/jia1.png",
-      nowPrice: Math.max(this.data.nowPrice - 10, 0),
+      nowPrice: Math.max(this.data.nowPrice - 10, this.data.minNowPrice),
       safeMoney: (Math.max(this.data.nowPrice - 10, 0) * 0.1).toFixed(0)
     })
   },
@@ -55,7 +59,7 @@ Page({
   },
 
   select(e) {
-    
+
     let index = e.target.dataset.index;
     if (index != this.data.selected) {
       this.data.nav[index].select = true;
@@ -66,8 +70,9 @@ Page({
       this.setData({
         nowSelect: "frontprice",
         nowId: "frontopenid",
-        nowPrice: this.data.info.frontprice,
-        safeMoney: (this.data.info.frontprice * 0.1).toFixed(0)
+        nowPrice: Math.max(this.data.info.frontprice, this.data.minNowPrice),
+        safeMoney: (this.data.info.frontprice * 0.1).toFixed(0),
+        nowType: 1
       })
     }
 
@@ -75,8 +80,9 @@ Page({
       this.setData({
         nowSelect: "middleprice",
         nowId: "middleopenid",
-        nowPrice: this.data.info.middleprice,
-        safeMoney: (this.data.info.frontprice * 0.1).toFixed(0)
+        nowPrice: Math.max(this.data.info.middleprice, this.data.minNowPrice),
+        safeMoney: (this.data.info.frontprice * 0.1).toFixed(0),
+        nowType: 2
       })
     }
 
@@ -84,8 +90,9 @@ Page({
       this.setData({
         nowSelect: "afterprice",
         nowId: "afteropenid",
-        nowPrice: this.data.info.afterprice,
-        safeMoney: (this.data.info.frontprice * 0.1).toFixed(0)
+        nowPrice: Math.max(this.data.info.afterprice, this.data.minNowPrice),
+        safeMoney: (this.data.info.frontprice * 0.1).toFixed(0),
+        nowType: 3
       })
     }
 
@@ -93,10 +100,10 @@ Page({
       nav: this.data.nav,
       selected: index
     })
-    
+
   },
 
-  queryad(params) {
+  queryad(params, openid) {
     fetch({
       url: "/mogaojava/queryad",
       data: {
@@ -106,100 +113,260 @@ Page({
     }).then(res => {
       this.setData({
         info: res.data,
-        nowPrice: res.data.middleprice
+        nowPrice: Math.max(res.data.middleprice, this.data.minNowPrice)
       })
+
+      if (res.data.frontopenid == "" && res.data.middleopenid == "" && res.data.afteropenid == "") {
+        this.setData({
+          buttonDisabled: false
+        })
+      } else {
+        if (
+            openid == res.data.frontopenid || 
+            openid == res.data.middleopenid || 
+            openid == res.data.middleopenid
+        ) {
+            this.setData({
+              buttonDisabled: true
+            })
+        }
+        
+      }
 
 
     }).catch(err => {
-      
+
       console.log(err)
     })
   },
 
-  bindSubmit() {
-      fetch({
-        url: "/mogaojava/auction",
-        data: {
-          ...this.data.params,
-          [this.data.nowSelect]: this.data.nowPrice,
-          [this.data.nowId]: this.data.openid
-        },
-        method: "POST"
-      }).then(res => {
+  querydeposit(e) {
+    let oriPrice = this.data.info[this.data.nowSelect];
+    let formId = e.detail.formId;
 
-        wx.navigateBack({
-          delta:1
-        })
-
-      }).catch(err => {
-
-        console.log(err)
+    if (this.data.nowPrice - 0 <= oriPrice - 0 || this.data.nowPrice - 0 <= this.data.minNowPrice - 0 ) {
+      wx.showModal({
+        content: '竞拍出价要大于当前出价',
+        showCancel: false
       })
+
+      return
+    }
+
+    fetch({
+      url: "/mogaojava/querydeposit",
+      // baseUrl: "http://192.168.50.238:9555",
+      data: {
+        openid: this.data.openid
+      },
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(result => {
+      console.log(result)
+      if(result.data == 0) { //需要交保证金
+        this.order(formId);      
+      } else if (result.data == 1){ //不用交保证金
+        this.saveform(formId);
+      }
+      // that.requestPayment(result, payMoney);
+    }).catch(err => {
+
+    });
+  },
+
+
+
+  order(formId) {
+    
+    let pay = this.data.safeMoneys;
+    this.prepay(this.data.openid, pay, formId)
+  },
+  prepay(openId, payMoney, formId) {
+    console.log("id" + formId);
+    var that = this;
+    fetch({
+      url: "/mogaojava/prepaydeposit",
+      data: {
+        'openid': this.data.openid,
+        'fee': payMoney,
+        'description': "广告竞拍保证金",
+        'usedScore': 0,
+        'mch_id': "",
+        'storeid': "",
+        'bonusScore': 0
+      },
+      method: "POST",
+    }).then(result => {
+      console.log(result);
+      if (result.returncode) {
+        wx.showModal({
+          content: result.returnmsg,
+        })
+        // wx.showToast({
+        //   title: result.returnmsg,
+        // })
+        return
+      }
+      var prepay_id = result.prepay_id;
+      that.sign(prepay_id, payMoney);
+    }).catch(err => {
+
+    });
+  },
+  //签名
+  sign(prepay_id, payMoney, formId) {
+    var that = this;
+    fetch({
+      url: "/mogaojava/sign",
+      // baseUrl: "http://192.168.50.238:9555",
+      data: {
+        'repay_id': prepay_id
+      },
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(result => {
+      console.log(result)
+      that.requestPayment(result, payMoney);
+    }).catch(err => {
+
+    });
+  },
+  //申请支付
+  requestPayment: function (obj, payMoney, formId) {
+    let self = this;
+    wx.requestPayment({
+      'timeStamp': obj.timeStamp,
+      'nonceStr': obj.nonceStr,
+      'package': obj.package,
+      'signType': obj.signType,
+      'paySign': obj.paySign,
+      'success': (res) => {
+        this.saveform(formId)
+      },
+      'fail': function (res) {
+        console.log('输出失败信息：')
+        console.log(res);
+        console.log("支付失败")
+      }
+    })
+  },
+
+  saveform(formId) {
+    fetch({
+      url: "/mogaojava/saveform",
+      // baseUrl: "http://192.168.50.238:9555",
+      data: {
+        openid: this.data.openid,
+        formid: formId,
+        videoid: this.data.params.videoid
+      },
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(result => {
+      console.log(result)
+      this.bindSubmit();
+      // that.requestPayment(result, payMoney);
+    }).catch(err => {
+
+    });
+  },
+
+  bindSubmit() {
+    fetch({
+      url: "/mogaojava/auction",
+      data: {
+        ...this.data.params,
+        [this.data.nowSelect]: this.data.nowPrice,
+        [this.data.nowId]: this.data.openid,
+        'type': this.data.nowType
+      },
+      method: "POST"
+    }).then(res => {
+
+      wx.navigateBack({
+        delta: 1
+      })
+
+    }).catch(err => {
+
+      console.log(err)
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { info, ...params } = options;
-    this.queryad(params);
-    this.getOpenid();
+    let { info, start, end, ...params } = options;
+
+    this.getOpenid(params);
+
     this.setData({
-      info: JSON.parse(info),
-      params: params
+      name: JSON.parse(info).name,
+      image: JSON.parse(info).image,
+      params: params,
+      start: start,
+      end: end,
+      rest: nearTime()
     })
+    setInterval(() => {
+      this.setData({
+        rest: nearTime()
+      })
+    }, 1000)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  getOpenid() {
+  getOpenid(params) {
     getOpenid().then(openid => {
+      this.queryad(params, openid);
       this.setData({
         openid: openid
       })

@@ -1,11 +1,22 @@
 import fetch from "../../utils/fetch.js"
 import {getOpenid} from "../../common/js/getOpenid.js"
+
+let frontadplay = false;
+let middleadplay = false;
+let afteradplay = false;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    scoreAction: false,
+    noFullScreen: false,
+    transScore: 1,
+    transScore: 2,
+    adplay: false,
+    vhidden: true,
     hidden: false,
     total: 5,
     evaluateLevel: {
@@ -19,6 +30,105 @@ Page({
     numshow: 0,
     numacoustoAndoptic: 0,
     iconlist: []
+  },
+
+  webpageskip() {
+    console.log(111)
+
+    wx.navigateTo({
+      url: '/packageA/webpage/webpage?weburl=' + "https://www.baidu.com",
+    })
+  },
+
+  //积分奖励
+  transform() {
+    fetch({
+      // baseUrl: "http://192.168.50.238:9555",
+      url: "/mg/invoke",
+      data: {
+        fcn: "transefer",
+        usr: "mgcoinpool",
+        args: ["mgcoinpool", "mgcoinpool", this.data.openid, this.data.transScore, "mogao", "广告播放", 8]
+      },
+      method: "POST"
+    }).then(res => {
+
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
+  currentProgress(e) {
+    let current = e.detail.currentTime;
+    let duration = e.detail.duration;
+
+    let percent = (current / duration).toFixed(2);
+    if (percent >= 0 && frontadplay == true) {
+      this.videoContext.pause();
+      this.transform();
+      console.log(this.data.front)
+      this.setData({
+        vhidden: false,
+        adplay: true,
+        adsrc: this.data.front,
+        weburl: this.data.fronturl,
+        nowDur: 0
+      })
+    }
+    if (percent >= 0.5 && middleadplay == true) {
+      this.videoContext.pause();
+      this.transform();
+      this.setData({
+        vhidden: false,
+        adplay: true,
+        adsrc: this.data.middle,
+        weburl: this.data.middleurl,
+        nowDur: 1
+      }, () => {
+        this.adContext.play();
+      })
+    }
+    
+  },
+
+  bindVideoEnd() {
+    if (afteradplay == true) {
+      this.videoContext.pause();
+      
+      this.transform();
+      this.setData({
+        vhidden: false,
+        adplay: true,
+        adsrc: this.data.after,
+        weburl: this.data.afterurl,
+        nowDur: 2,
+        hidden: false
+      },() => {
+        this.adContext.play();
+      })
+    }else{
+      this.setData({
+        hidden: false
+      })
+    }
+  },
+
+  bindAdEnd() {
+    this.setData({
+      vhidden: true,
+      adplay: false
+    }, () => {
+      if (this.data.nowDur == 0) {
+        frontadplay = false;
+      } else if (this.data.nowDur == 1) {
+        middleadplay = false;
+      } else {
+        afteradplay = false;
+      }
+
+      this.videoContext.play();
+    })
   },
 
   fullscreen(e) {
@@ -38,7 +148,8 @@ Page({
   plotEvent(e) {
       console.log(e)
       this.setData({
-        numplot: e.detail.choose + 1
+        numplot: e.detail.choose + 1,
+        scoreAction: true
       })
 
       this.initCanvas()
@@ -47,7 +158,8 @@ Page({
   showEvent(e) {
     console.log(e)
     this.setData({
-      numshow: e.detail.choose + 1
+      numshow: e.detail.choose + 1,
+      scoreAction: true
     })
 
     this.initCanvas()
@@ -56,7 +168,8 @@ Page({
   musicEvent(e) {
     console.log(e)
     this.setData({
-      numacoustoAndoptic: e.detail.choose + 1
+      numacoustoAndoptic: e.detail.choose + 1,
+      scoreAction: true
     })
 
     this.initCanvas()
@@ -72,7 +185,8 @@ Page({
     }
     
     this.setData({
-      iconlist: this.data.iconlist
+      iconlist: this.data.iconlist,
+      lable:true
     })
   },
 
@@ -136,6 +250,55 @@ Page({
       console.log(err)
     })
 
+  },
+
+  queryplayad(videoid) {
+    fetch({
+      url: "/mogaojava/queryplayad",
+      data: {
+        videoid: videoid
+      },
+      method: "POST"
+    }).then(res => {
+      console.log(res)
+      if(!!res.data) {
+        this.setData({
+          fronturl: res.data.fronturl,
+          middleurl: res.data.middleurl,
+          afterurl: res.data.afterurl
+        })
+      }
+      
+      if (res.data && res.data.front != "") {
+        frontadplay = true;
+        this.setData({
+          front: res.data.front
+        }) 
+      }
+      if (res.data && res.data.middle != "") {
+        middleadplay = true;
+        this.setData({
+          middle: res.data.middle
+        }) 
+      }
+      if (res.data && res.data.after != "") {
+        afteradplay = true;
+        this.setData({
+          after: res.data.after
+        }) 
+      }
+      // if (!!res.data) {
+      //   this.setData({
+      //     front: res.data.front,
+      //     middle: res.data.middle,
+      //     after: res.data.after
+      //   }) 
+      // }
+         
+
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   initStar() {
@@ -213,7 +376,27 @@ Page({
     getOpenid().then(openid => {
       this.setData({
         openid: openid
+      }, () => {
+        this.transform(openid); //积分奖励
       })
+    })
+  },
+  //积分奖励
+  transform(openid) {
+    fetch({
+      // baseUrl: "http://192.168.50.238:9555",
+      url: "/mg/invoke",
+      data: {
+        fcn: "transefer",
+        usr: "mgcoinpool",
+        args: ["mgcoinpool", "mgcoinpool", openid, this.data.transScore, "mogao", "观看影片", 2]
+      },
+      method: "POST"
+    }).then(res => {
+
+
+    }).catch(err => {
+      console.log(err)
     })
   },
 
@@ -221,17 +404,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    frontadplay = false;
+    middleadplay = false;
+    afteradplay = false;
+
     this.getOpenid();
     this.initMovie(options.moviesrc);
     this.initplay(options.videoid);
+    this.queryplayad(options.videoid);
     this.initCanvas();
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.videoContext = wx.createVideoContext('myVideo');
+    this.adContext = wx.createVideoContext('myVideoad');
+    // this.videoContext.requestFullScreen()
   },
 
   /**
@@ -248,10 +442,52 @@ Page({
   
   },
 
+  transeval() {
+    fetch({
+      // baseUrl: "http://192.168.50.238:9555",
+      url: "/mg/invoke",
+      data: {
+        fcn: "transefer",
+        usr: "mgcoinpool",
+        args: ["mgcoinpool", "mgcoinpool", this.data.openid, 1, "mogao", "评分奖励", 3]
+      },
+      method: "POST"
+    }).then(res => {
+
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  translabel() {
+    fetch({
+      // baseUrl: "http://192.168.50.238:9555",
+      url: "/mg/invoke",
+      data: {
+        fcn: "transefer",
+        usr: "mgcoinpool",
+        args: ["mgcoinpool", "mgcoinpool", this.data.openid, 1, "mogao", "标签奖励", 4]
+      },
+      method: "POST"
+    }).then(res => {
+
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    if (this.data.scoreAction == true) {
+      this.transeval();
+    }
+    
+    if (this.data.label == true) {
+      this.translabel();
+    }
     fetch({
       url: "/mogaojava/savescore",
       data: {

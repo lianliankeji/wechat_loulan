@@ -1,6 +1,31 @@
 <view class="container">
-  <video class='video' autoplay src='{{moviesrc}}' bindfullscreenchange="fullscreen"></video>
-  <Cutline title-class="titleBg">评分</Cutline>
+  <video 
+    id="myVideo"
+    class='video' 
+    page-gesture="true"
+    enable-progress-gesture="true"
+    hidden='{{!vhidden}}'
+    autoplay="true" 
+    src='{{moviesrc}}' 
+    bindended="bindVideoEnd"
+    bindtimeupdate="currentProgress"
+    bindfullscreenchange="fullscreen"></video>
+  <video 
+    hidden='{{vhidden}}'
+    id="myVideoad"
+    class='video' 
+    controls="false"
+    bindtimeupdate="adProgress"
+    bindended="bindAdEnd"
+    autoplay src='{{adsrc}}' 
+    show-progress="false"
+    show-play-btn="false"
+    show-center-play-btn="false"
+    enable-progress-gesture='false'
+    bindfullscreenchange="fullscreen"><cover-view class="controls" bindtap='webpageskip'> 
+      <cover-view class="ad">广告</cover-view>
+  </cover-view></video>  
+  <!-- <Cutline title-class="titleBg">评分</Cutline> -->
   <view class='data flex-row-spaceBetween'>
     <view class='canvas'>
       <canvas class='cans' canvas-id="myCanvas"  hidden="{{hidden}}"/>
@@ -39,7 +64,7 @@
       </view>
     </view>
   </view>
-  <Cutline title-class="titleBg">标签</Cutline>
+  <!-- <Cutline title-class="titleBg">标签</Cutline> -->
   <view class='iconlist'>
     <view class='icon-item {{item.active == true ? "active" : ""}}' wx:for="{{iconlist}}" wx:key="{{index}}" data-index='{{index}}' bindtap='selectIcon'>{{item.tag}}</view>
   </view>

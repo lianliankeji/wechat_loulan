@@ -1,6 +1,7 @@
 import fetch from "../../utils/fetch.js"
 import { getOpenid } from "../../common/js/getOpenid.js"
-import { duringTime } from '../../utils/util.js'
+import { duringTime, nearTime } from '../../utils/util.js'
+
 Page({
 
   /**
@@ -26,12 +27,21 @@ Page({
       method: "POST"
     }).then(res => {
       wx.navigateTo({
-        url: '../auctionDetail/auctionDetail?videoid=' + videoid + "&starttime=" + res.data.starttime + "&endtime=" + res.data.endtime + "&info=" + info
+        url: '../auctionDetail/auctionDetail?videoid=' + videoid + "&starttime=" + res.data.starttime + "&endtime=" + res.data.endtime + "&info=" + info + "&start=" + this.data.start + "&end=" + this.data.end 
       })
       
 
     }).catch(err => {
       console.log(err)
+    })
+  },
+
+  startImplant(videoid, info) {
+    let now = this.data.data.now;
+    let starttime = now.substr(0, now.length - 2) + this.data.startHour;
+    let endtime = now.substr(0, now.length - 2) + this.data.endHour;
+    wx.navigateTo({
+      url: '../implant/implant?videoid=' + videoid + "&starttime=" + starttime + "&endtime=" + endtime + "&info=" + info + "&start=" + this.data.start + "&end=" + this.data.end 
     })
   },
 
@@ -44,8 +54,7 @@ Page({
 
     }
     else if (state == 2) {
-
-
+      this.startImplant(videoid, JSON.stringify(info));
     }
   },
 
@@ -84,8 +93,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getOpenid();
-
+  
   },
 
   /**
@@ -99,6 +107,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getOpenid();
 
   },
 

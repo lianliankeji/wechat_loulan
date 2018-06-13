@@ -1,0 +1,29 @@
+<!--pages/buy/buy.wxml-->
+
+<view class='container'>
+
+  <view class='buy'>
+
+    <view class='item'>
+      <label class='title'>价格 </label>
+      <view class='price'>10 DCT</view>
+    </view>
+    <view class='item'>
+      <label class='title'>手机号 </label>
+      <view class='sendcode'>
+        <input type='number' maxlength='11' value='{{mobile}}' bindinput='phoneInput'></input>
+        <button disabled='true'  class='send' style="opacity: 0;">获 取</button>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='title'>验证码 </label>
+      <view class='sendcode'>
+        <input type='number' maxlength='4' bindinput='smsInput'></input>
+        <button disabled='{{smsBtn}}' data-mobile='{{mobile}}' class='send' bindtap='sendMsg' >{{codestate}}</button>
+      </view>
+    </view>
+
+    <view class='button' bindtap='precheck'>购买</view>
+
+  </view>
+</view>

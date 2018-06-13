@@ -17,6 +17,7 @@ App({
                 key: 'openid',
                 data: data.data.openid,
               });
+              wx.setStorageSync("openidSync", data.data.openid)
             }
           });
         } else {

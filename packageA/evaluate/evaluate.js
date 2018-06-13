@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputValue: "",
+    transScore: 10,
     placeholder: "1983",
     total: 5,
     numplot: 5,
@@ -145,6 +147,15 @@ Page({
   addIcon(e) {
     let name = e.detail.value;
     let tagtype = this.data.nowType;
+    
+    if(name == "") {
+      wx.showModal({
+        content: '标签内容不能为空',
+        showCancel: false
+      })
+
+      return;
+    }
 
     if (this.data.iconlist.length > 4) {
       wx.showModal({
@@ -168,6 +179,15 @@ Page({
 
     let name = this.data.inputValue;
     let tagtype = this.data.nowType;
+
+    if (name == "") {
+      wx.showModal({
+        content: '标签内容不能为空',
+        showCancel: false
+      })
+
+      return;
+    }
 
     if (this.data.iconlist.length > 4) {
       wx.showModal({
@@ -250,9 +270,28 @@ Page({
     })
 
   },
+  //积分奖励
+  transform() {
+    fetch({
+      // baseUrl: "http://192.168.50.238:9555",
+      url: "/mg/invoke",
+      data: {
+        fcn: "transefer",
+        usr: "mgcoinpool",
+        args: ["mgcoinpool", "mgcoinpool", this.data.openid, this.data.transScore, "mogao", "上传影片", 1]
+      },
+      method: "POST"
+    }).then(res => {
+
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
 
   next() {
     if(this.data.iconlist.length > 0) {
+      this.transform();
       this.savescore();
     }else{
       wx.showModal({

@@ -1,9 +1,11 @@
 <view class="container">
+  <form report-submit bindsubmit="querydeposit">
   <view class='top'>
+     <image class='img' mode='aspectFill' src='http://store.lianlianchains.com/images/{{image}}'></image> 
     <view class='info'>
-      <view>狂暴巨兽</view>
-      <view class='during'>广告植入8:00-9:00时段竞拍</view>
-      <view class='endtime'>据拍卖结束剩余56分26秒</view>
+      <view>{{name}}</view>
+      <view class='during'>广告植入{{start}}-{{end}}时段竞拍</view>
+      <view class='endtime'>距拍卖结束剩余<text class='time'>{{rest}}</text></view>
     </view>
     <view class='nav flex-row-center'>
       <view 
@@ -17,7 +19,7 @@
   <view class='content'>
     <view class='section flex-row-flexStart'>
       <view class='section-title'>当前价</view>
-      <input class='section-input' bindinput='bindNowInput' value='{{nowPrice}}'></input>
+      <input class='section-input' disabled='true' bindinput='bindNowInput' value='{{nowPrice}}'></input>
       <view class='change'>
         <image bindtap='reduce' class='icon' src='{{icon1}}'></image>
         <image bindtap='increase' class='icon' src='{{icon2}}'></image>
@@ -25,10 +27,11 @@
     </view>
     <view class='section flex-row-flexStart'>
       <view class='section-title'>保证金</view>
-      <input class='section-input' value='{{safeMoneys}}'></input>
-      <button class='invoke'>充值</button>
+      <input class='section-input' disabled='true' value='{{safeMoneys}}'></input>
     </view>
+    <view class='prompt'>首次拍卖需要先支付保证金</view>
   </view>
 
-  <button class='button' bindtap='bindSubmit'>提交</button>
+  <button class='button' form-type='submit' disabled='{{buttonDisabled}}'>提交</button>
+  </form>
 </view>

@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='item flex-row-spaceBetween' wx:for="{{infoList}}" wx:key="{{index}}">
+    <view class='name'>{{item.name}}</view>
+    <view class='score'>{{item.score}}</view>
+  </view>
+</view>

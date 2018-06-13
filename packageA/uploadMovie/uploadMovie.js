@@ -34,7 +34,8 @@ Page({
     uploadVedio().then(res => {
       console.log(res.tempFilePath);
       this.setData({
-        hiddenPro: false
+        hiddenPro: false,
+        reupshow: false
       })
 
       this.getOpenid().then(openid => {
@@ -54,7 +55,10 @@ Page({
             if (data.ec == "000000") {
               this.setData({
                 videosrc: data.data,
-                show: true
+                show: true,
+                reupshow: true,
+                hiddenPro: true,
+                progress: 100
               })
               
             }
@@ -62,22 +66,10 @@ Page({
         })
 
         uploadTask.onProgressUpdate((res) => {
-
+          console.log(res.progress)
           this.setData({
             progress: res.progress, 
-          })
-
-          if (res.progress == "100") {
-            setTimeout(() =>{
-              this.setData({
-                reupshow: true,
-                hiddenPro: true
-              })
-            },1000)
-              
-          }
-
-          console.log('上传进度', res.progress)
+          });
           // console.log('已经上传的数据长度', res.totalBytesSent)
           // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
         })

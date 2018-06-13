@@ -16,7 +16,15 @@
         "auction/auction",
         "auctionDetail/auctionDetail",
         "implant/implant",
-        "DCTDetail/DCTDetail"
+        "DCTDetail/DCTDetail",
+        "webpage/webpage",
+        "buy/buy"
+      ]
+    },
+    {
+      "root": "packageB/",
+      "pages": [
+        "scoreInfo/scoreInfo"
       ]
     }
   ],

@@ -3,19 +3,22 @@
     <image class='img' src='/image/bg1.png'></image>
     <view class='data flex-row-spaceBetween'>
       <view class='left'>
-        <view class='title'>累计奖励</view>
+        <view class='title flex-row-flexStart'>
+          <text>累计奖励</text>
+          <image class='iconinfo' src="/image/info.png" bindtap='bindInfoView'></image>
+        </view>
         <view><text class='num'>{{result.restamt}}</text><text class='unit'>DCT</text></view>
       </view>
       <view class='right flex-column-center'>
-        <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+        <image class='avatar' bindtap='detail' src='{{userInfo.avatarUrl}}'></image>
         <view class='word'>第{{result.rank}}名</view>
       </view>
     </view>
     
   </view>
-  <view class='report flex-row-center'>
+  <view class='report flex-row-center' hidden="{{tuisong}}">
     <image class='img' src='/image/horn.png'></image>
-    <text>{{"疯狂的包子"}}上传了一张电影票</text>
+    <text>{{person}}</text>
   </view>
   <view class='line'></view>
   <view class='info'>
@@ -27,8 +30,8 @@
       <view class='item flex-row-spaceBetween' wx:for="{{result.topn}}" wx:key="{{item.rank}}">
         <view class='left flex-row-flexStart'>
           <view class='SerialNum'>{{item.rank}}</view>
-          <image class='avatar' src="{{item.picture}}"></image>
-          <view>{{item.nickname}}</view>
+          <image class='avatar' src="{{item.picture ? item.picture : '/image/user.png'}}"></image>
+          <view>{{item.nickname ? item.nickname : "***"}}</view>
         </view>
         
         <view class='right'>{{item.restamt}}</view>
